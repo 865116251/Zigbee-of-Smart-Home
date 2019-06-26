@@ -1,0 +1,291 @@
+#include "SAPP_Device.h"
+#include "Sensor.h"
+#include <string.h>
+
+/**************************************************************/
+/* 传感器列表                                                 */
+/**************************************************************/
+#if defined(HAS_TEMP)
+void sensorTempTimeout(struct ep_info_t *ep);
+void sensorTempTimeout(struct ep_info_t *ep)
+{
+    uint16 value = GetADValue();
+    // TODO: 这里增加算法,将AD值变换为温度值的100倍
+    
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_HUMM)
+void sensorHummTimeout(struct ep_info_t *ep);
+void sensorHummTimeout(struct ep_info_t *ep)
+{
+    uint16 value = GetADValue();
+    // TODO: 这里增加算法,将AD值变换为湿度值的100倍
+    
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_ILLUM)
+void sensorILLumTimeout(struct ep_info_t *ep);
+void sensorILLumTimeout(struct ep_info_t *ep)
+{
+    uint16 value = GetADValue();
+    // TODO: 这里增加算法,将AD值变换为光照度的100倍
+    
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_RAIN)
+void sensorRainTimeout(struct ep_info_t *ep);
+void sensorRainTimeout(struct ep_info_t *ep)
+{
+    uint8 value = GetADValue();
+    // TODO: 这里增加算法,将AD值变换为有雨或没雨(1或0)
+    
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_IRDIST)
+void sensorIRDistTimeout(struct ep_info_t *ep);
+void sensorIRDistTimeout(struct ep_info_t *ep)
+{
+    uint16 value = 0;
+    // TODO: 这里增加算法,计算距离值value的单位为mm
+    
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_GAS)
+void sensorGasResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+void sensorGasResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+{
+    if(type == ResInit)
+    {
+        GasInit();
+    }
+}
+void sensorGasTimeout(struct ep_info_t *ep);
+void sensorGasTimeout(struct ep_info_t *ep)
+{
+    uint8 value = GasInfo();
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_SMOKE)
+void sensorSmokeResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+void sensorSmokeResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+{
+    if(type == ResInit)
+        SmokeInit();
+}
+void sensorSmokeTimeout(struct ep_info_t *ep);
+void sensorSmokeTimeout(struct ep_info_t *ep)
+{
+    uint8 value = SmokeInfo();
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_FIRE)
+void sensorFireTimeout(struct ep_info_t *ep);
+void sensorFireTimeout(struct ep_info_t *ep)
+{
+}
+#endif
+#if defined(HAS_IRPERS)
+void sensorIRPersResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+void sensorIRPersResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+{
+    if(type == ResInit)
+        SafetyInit();
+}
+void sensorIRPersTimeout(struct ep_info_t *ep);
+void sensorIRPersTimeout(struct ep_info_t *ep)
+{
+    uint8 value = SafetyInfo();
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_VOICE)
+void sensorVoiceTimeout(struct ep_info_t *ep);
+void sensorVoiceTimeout(struct ep_info_t *ep)
+{
+}
+#endif
+#if defined(HAS_EXECUTEB)
+void OutputExecuteBResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+void OutputExecuteBResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+{
+    if(type == ResInit)
+        ControlInit();
+}
+void outputExecuteB(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+void outputExecuteB(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+{
+    //msg->Data[], msg->DataLength, msg->TransSeqNumber
+    Control(msg->Data[0]);
+}
+void outputExecuteBTimeout(struct ep_info_t *ep);
+void outputExecuteBTimeout(struct ep_info_t *ep)
+{
+    uint8 value = P1 >> 4;
+    SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+}
+#endif
+#if defined(HAS_EXECUTEA)
+void outputExecuteA(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+void outputExecuteA(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+{
+}
+#endif
+#if defined(HAS_REMOTER)
+void outputRemoter(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+void outputRemoter(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+{
+}
+#endif
+/***************************************************/
+/* 测试代码,可以不用删除                           */
+/***************************************************/
+#if defined(HAS_TESTFUNCTION)
+void testFunc_NwkStateChanged(struct ep_info_t *ep);
+void testFunc_NwkStateChanged(struct ep_info_t *ep)
+{
+}
+void testFunc_inComeData(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+void testFunc_inComeData(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+{
+    //msg->Data[], msg->DataLength, msg->TransSeqNumber
+}
+void testFunc_TimeOut(struct ep_info_t *ep);
+void testFunc_TimeOut(struct ep_info_t *ep)
+{
+    // send sensor data to coordinator
+    //    SampleApp_SendPeriodicMessage(task_id);
+    uint8 sendBuf[] = "(1 1)\r\n";
+    sendBuf[1] = ep->ep + '0';
+    sendBuf[3] = ep->function.type + '0';
+    SendData(ep->ep, sendBuf, 0x0000, TRANSFER_ENDPOINT, 7);
+}
+void testFunc_ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+void testFunc_ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+{
+    switch(type)
+    {
+    case ResInit:
+        // 在这里可以做需要在初始化阶段做的事情
+        break;
+    }
+}
+#endif
+/***************************************************/
+/* 下面这一段针对路由器, 不需要修改                */
+/***************************************************/
+struct ep_info_t funcList[] = {
+#if defined(HAS_TEMP)
+    {
+        NULL, NULL, sensorTempTimeout, NULL,
+        { DevTemp, 0, 10 },                 // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_HUMM)
+    {
+        NULL, NULL, sensorHummTimeout, NULL,
+        { DevHumm, 0, 10 },                 // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_ILLUM)
+    {
+        NULL, NULL, sensorILLumTimeout, NULL,
+        { DevILLum, 0, 10 },                // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_RAIN)
+    {
+        NULL, NULL, sensorRainTimeout, NULL,
+        { DevRain, 0, 10 },                 // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_IRDIST)
+    {
+        NULL, NULL, sensorIRDistTimeout, NULL,
+        { DevIRDist, 0, 10 },               // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_GAS)
+    {
+        NULL, NULL, sensorGasTimeout, sensorGasResAvailable,
+        { DevGas, 0, 3 },                   // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_SMOKE)
+    {
+        NULL, NULL, sensorSmokeTimeout, sensorSmokeResAvailable,
+        { DevSmoke, 0, 3 },                 // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_FIRE)
+    {
+        NULL, NULL, sensorFireTimeout, NULL,
+        { DevFire, 0, 3 },                  // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_IRPERS)
+    {
+        NULL, NULL, sensorIRPersTimeout, sensorIRPersResAvailable,
+        { DevIRPers, 0, 3 },                // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_VOICE)
+    {
+        NULL, NULL, sensorVoiceTimeout, NULL,
+        { DevVoice, 0, 10 },                // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_EXECUTEB)
+    {
+        NULL, outputExecuteB, outputExecuteBTimeout, OutputExecuteBResAvailable,
+        { DevExecuteB, 0, 3 },              // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_EXECUTEA)
+    {
+        NULL, outputExecuteA, NULL, NULL,
+        { DevExecuteA, 0, 0 },              // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_REMOTER)
+    {
+        NULL, outputRemoter, NULL, NULL,
+        { DevRemoter, 0, 0 },              // type, id, refresh cycle
+    },
+#endif
+#if defined(HAS_TESTFUNCTION)
+    {
+        testFunc_NwkStateChanged,
+        testFunc_inComeData,
+        testFunc_TimeOut,
+        testFunc_ResAvailable,
+        { 1, 0, 5 },
+    },
+#endif
+#if defined(ZDO_COORDINATOR)
+    {   // 协调器
+        CoordinatorNwkStateChangeRoutine,
+        CoordinatorIncomingRoutine,
+        CoordinatorTimeoutRoutine,
+        CoordinatorResAvailableRoutine,
+        { DevCoordinator, 0, 0 },
+    },
+#elif defined(RTR_NWK)
+    {   // 路由器
+        RouterNwkStateChangeRoutine,
+        RouterIncomingRoutine,
+        RouterTimeoutRoutine,
+        RouterResAvailableRoutine,
+        { DevRouter, 0, 30 },
+    },
+#endif
+};
+
+// 不能修改下面的内容!!!
+const uint8 funcCount = sizeof(funcList) / sizeof(funcList[0]);

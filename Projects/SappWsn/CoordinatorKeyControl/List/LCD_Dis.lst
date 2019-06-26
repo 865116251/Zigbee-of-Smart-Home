@@ -1,0 +1,1984 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.10.3.10338/W32 for 8051         31/May/2019  11:06:51 #
+# Copyright 2004-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#    Source file        =  F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\Source\LCD_Dis.c                                 #
+#    Command line       =  -f F:\cc2530testing\ZStack-CC2530-IOT\Projects\Sap #
+#                          pWsn\..\zstack\Tools\CC2530DB\f8wCoord.cfg         #
+#                          (-DCPU32MHZ -DROOT=__near_func                     #
+#                          -DMAC_CFG_APP_PENDING_QUEUE=TRUE                   #
+#                          -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8         #
+#                          -DMAC_CFG_RX_MAX=5 -DZDO_COORDINATOR -DRTR_NWK)    #
+#                          -f F:\cc2530testing\ZStack-CC2530-IOT\Projects\Sap #
+#                          pWsn\..\zstack\Tools\CC2530DB\f8wConfig.cfg        #
+#                          (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0      #
+#                          -DREFLECTOR -DDEFAULT_CHANLIST=0x00020000          #
+#                          -DZDAPP_CONFIG_PAN_ID=0x0213                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)   #
+#                          -DREJOIN_POLL_RATE=440 F:\cc2530testing\ZStack-CC2 #
+#                          530-IOT\Projects\SappWsn\Source\LCD_Dis.c -D       #
+#                          ZTOOL_P1 -D MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC  #
+#                          -D KEY -lC F:\cc2530testing\ZStack-CC2530-IOT\Proj #
+#                          ects\SappWsn\CoordinatorKeyControl\List\ -lA       #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\CoordinatorKeyControl\List\ --diag_suppress      #
+#                          Pe001,Pa010 -o F:\cc2530testing\ZStack-CC2530-IOT\ #
+#                          Projects\SappWsn\CoordinatorKeyControl\Obj\ -e     #
+#                          --no_code_motion --debug --core=plain --dptr=16,1  #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 16    #
+#                          -I F:\cc2530testing\ZStack-CC2530-IOT\Projects\Sap #
+#                          pWsn\ -I F:\cc2530testing\ZStack-CC2530-IOT\Projec #
+#                          ts\SappWsn\Source\ -I F:\cc2530testing\ZStack-CC25 #
+#                          30-IOT\Projects\SappWsn\..\zstack\ZMain\TI2530DB\  #
+#                          -I F:\cc2530testing\ZStack-CC2530-IOT\Projects\Sap #
+#                          pWsn\..\..\Components\hal\include\ -I              #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\hal\target\CC2530EB\ -I         #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\mac\include\ -I                 #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\mac\high_level\ -I              #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\mac\low_level\srf04\ -I         #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\mac\low_level\srf04\single_chip #
+#                          \ -I F:\cc2530testing\ZStack-CC2530-IOT\Projects\S #
+#                          appWsn\..\..\Components\mt\ -I                     #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\osal\include\ -I                #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\services\saddr\ -I              #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\services\sdata\ -I              #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\stack\af\ -I                    #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\stack\nwk\ -I                   #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\stack\sapi\ -I                  #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\stack\sec\ -I                   #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\stack\sys\ -I                   #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\stack\zdo\ -I                   #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\zmac\ -I                        #
+#                          F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\..\..\Components\zmac\f8w\ -Ohz                  #
+#                          --require_prototypes                               #
+#    List file          =  F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\CoordinatorKeyControl\List\LCD_Dis.lst           #
+#    Object file        =  F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWs #
+#                          n\CoordinatorKeyControl\Obj\LCD_Dis.r51            #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+F:\cc2530testing\ZStack-CC2530-IOT\Projects\SappWsn\Source\LCD_Dis.c
+      1          //========================================================================
+      2          // 文件名:  LCD_Dis.c
+      3          // 作  者: liutg
+      4          // 日  期: 2013/02/10
+      5          // 描  述: MzLH04-12864 LCD显示模块驱动V1.0版
+      6          //			基本功能接口函数集
+      7          //
+      8          // 参  考: 无
+      9          // 版  本:
+     10          //      2009/02/10      First version    Mz Design
+     11          //========================================================================
+     12          
+     13          #include  "LCD_Config.h"
+     14          #include  "LCD_Dis.h"
+     15          #include  "hal_defs.h"
+     16          #include  "hal_mcu.h"
+
+   \                                 In  segment SFR_AN, at 0x90
+   \   union <unnamed> volatile __sfr _A_P1
+   \                     _A_P1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf4
+   \   unsigned char volatile __sfr P1SEL
+   \                     P1SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfe
+   \   unsigned char volatile __sfr P1DIR
+   \                     P1DIR:
+   \   000000                DS 1
+     17          
+     18          #define SPI_CS1()  P1 |= 0x10    //P1_4
+     19          #define SPI_CS0()  P1 &= (~0x10) //P1_4
+     20          #define SPI_SCK1() P1 |= 0x20    //P1_5
+     21          #define SPI_SCK0() P1 &= (~0x20) //P1_5
+     22          #define SPI_SDA1() P1 |= 0x40    //P1_6	
+     23          #define SPI_SDA0() P1 &= (~0x40) //P1_6	
+     24          //#define SPI_RES1() st( P1_7 = 1;)	
+     25          //#define SPI_RES0() st( P1_7 = 0;)	
+     26          
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     27          unsigned char X_Witch=6;
+   \                     X_Witch:
+   \   000000                DS 1
+   \   000001                REQUIRE `?<Initializer for X_Witch>`
+   \   000001                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     28          unsigned char Y_Witch=10;
+   \                     Y_Witch:
+   \   000000                DS 1
+   \   000001                REQUIRE `?<Initializer for Y_Witch>`
+   \   000001                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     29          unsigned char X_Witch_cn=16;
+   \                     X_Witch_cn:
+   \   000000                DS 1
+   \   000001                REQUIRE `?<Initializer for X_Witch_cn>`
+   \   000001                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     30          unsigned char Y_Witch_cn=16;
+   \                     Y_Witch_cn:
+   \   000000                DS 1
+   \   000001                REQUIRE `?<Initializer for Y_Witch_cn>`
+   \   000001                REQUIRE __INIT_XDATA_I
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     31          unsigned char Dis_Zero=0;
+   \                     Dis_Zero:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+     32          //========================================================================
+     33          // 函数: void LCD_Init(void)
+     34          // 描述: LCD初始化程序，主要在里面完成端口初始化以及LCD模块的复位
+     35          // 参数: 无 
+     36          // 返回: 无
+     37          // 备注:
+     38          // 版本:
+     39          //      2009/02/10      First version    Mz Design
+     40          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     41          void TimeDelay(unsigned int Timers)
+   \                     TimeDelay:
+     42          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   \   000000   8008         SJMP    ??TimeDelay_0
+     43          	unsigned int i;
+     44          	while(Timers)
+     45          	{
+     46          		Timers--;
+   \                     ??TimeDelay_1:
+   \   000002   EA           MOV     A,R2
+   \   000003   24FF         ADD     A,#-0x1
+   \   000005   1A           DEC     R2
+   \   000006   EB           MOV     A,R3
+   \   000007   34FF         ADDC    A,#-0x1
+   \   000009   FB           MOV     R3,A
+     47          		for(i=0;i<100;i++) ;
+     48          	}
+   \                     ??TimeDelay_0:
+   \   00000A   EA           MOV     A,R2
+   \   00000B   4B           ORL     A,R3
+   \   00000C   70F4         JNZ     ??TimeDelay_1
+     49          }
+   \   00000E   02....       LJMP    ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     50          void LCD_Init(void)
+   \                     LCD_Init:
+     51          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     52                  P1SEL = 0;   //P10,P11,P12,P13,P14,P15,P16,P17为GPIO        
+   \   000004   75F400       MOV     0xf4,#0x0
+     53                  P1DIR = 0xff;//P10,P11,P12,P13,P14,P15,P16,P17为OUTPUT    
+   \   000007   75FEFF       MOV     0xfe,#-0x1
+     54          	//SS和SCK预先设置为高电平
+     55          	SPI_SCK1();
+   \   00000A   D295         SETB    0x90.5
+     56          	SPI_CS1();
+   \   00000C   D294         SETB    0x90.4
+     57          	
+     58          	//复位LCD模块
+     59          	//SPI_RES = 0;
+     60          	TimeDelay(50);			
+   \   00000E                ; Setup parameters for call to function TimeDelay
+   \   00000E   7A32         MOV     R2,#0x32
+   \   000010   7B00         MOV     R3,#0x0
+   \   000012   12....       LCALL   ??TimeDelay?relay
+     61          	//保持低电平大概2ms左右
+     62          	//SPI_RES = 1;
+     63          	TimeDelay(80);				    	//延时大概10ms左右
+   \   000015                ; Setup parameters for call to function TimeDelay
+   \   000015   7A50         MOV     R2,#0x50
+   \   000017   7B00         MOV     R3,#0x0
+   \   000019   12....       LCALL   ??TimeDelay?relay
+     64          }
+   \   00001C                REQUIRE ?Subroutine0
+   \   00001C                REQUIRE P1SEL
+   \   00001C                REQUIRE P1DIR
+   \   00001C                REQUIRE _A_P1
+   \   00001C                ; // Fall through to label ?Subroutine0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+     65          //========================================================================
+     66          // 函数: void SPI_SSSet(unsigned char Status)
+     67          // 描述: 置SS线状态
+     68          // 参数: Status   =1则置高电平，=0则置低电平  
+     69          // 返回: 无
+     70          // 版本:
+     71          //      2009/02/10      First version    Mz Design
+     72          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     73          void SPI_SSSet(unsigned char Status)
+   \                     SPI_SSSet:
+     74          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     75          	if(Status)				//判断是要置SS为低还是高电平？//SS置高电平
+   \   000000   E9           MOV     A,R1
+   \   000001   6004         JZ      ??SPI_SSSet_0
+     76          	  SPI_CS1();
+   \   000003   D294         SETB    0x90.4
+   \   000005   8002         SJMP    ??SPI_SSSet_1
+     77          	else   //SS置低电平
+     78          	  SPI_CS0();
+   \                     ??SPI_SSSet_0:
+   \   000007   C294         CLR     0x90.4
+     79          }
+   \                     ??SPI_SSSet_1:
+   \   000009   02....       LJMP    ?BRET
+   \   00000C                REQUIRE _A_P1
+     80          //========================================================================
+     81          // 函数: void SPI_Send(unsigned char Data)
+     82          // 描述: 通过串行SPI口输送一个byte的数据置模组
+     83          // 参数: Data 要传送的数据 
+     84          // 返回: 无
+     85          // 版本:
+     86          //      2007/07/17      First version
+     87          //		2007/07/24		V1.2 for MCS51 Keil C
+     88          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     89          void SPI_Send(unsigned char Data)
+   \                     SPI_Send:
+     90          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     91          	unsigned char i=0;
+     92          	for(i=0;i<8;i++)
+   \   000000   7808         MOV     R0,#0x8
+     93          	{
+     94          		//SCK置低
+     95          		SPI_SCK0();
+   \                     ??SPI_Send_0:
+   \   000002   C295         CLR     0x90.5
+     96          		if(Data&0x80)
+   \   000004   E9           MOV     A,R1
+   \   000005   A2E7         MOV     C,0xE0 /* A   */.7
+   \   000007   5004         JNC     ??SPI_Send_1
+     97          		  SPI_SDA1();			
+   \   000009   D296         SETB    0x90.6
+   \   00000B   8002         SJMP    ??SPI_Send_2
+     98          		else 
+     99                            SPI_SDA0();//
+   \                     ??SPI_Send_1:
+   \   00000D   C296         CLR     0x90.6
+    100          		//SCK上升沿触发串行数据采样
+    101          		SPI_SCK1();
+   \                     ??SPI_Send_2:
+   \   00000F   D295         SETB    0x90.5
+    102          		Data = Data<<1;							//数据左移一位
+   \   000011   C3           CLR     C
+   \   000012   33           RLC     A
+   \   000013   F9           MOV     R1,A
+    103          	}
+   \   000014   18           DEC     R0
+   \   000015   E8           MOV     A,R0
+   \   000016   70EA         JNZ     ??SPI_Send_0
+    104          }
+   \   000018   02....       LJMP    ?BRET
+   \   00001B                REQUIRE _A_P1
+    105          //========================================================================
+    106          // 函数: void FontSet(unsigned char Font_NUM,unsigned char Color)
+    107          // 描述: ASCII字符字体设置
+    108          // 参数: Font_NUM 字体选择,以驱动所带的字库为准
+    109          //		 Color  文本颜色,仅作用于ASCII字库  
+    110          // 返回: 无
+    111          // 备注: 
+    112          // 版本:
+    113          //      2007/07/19      First version
+    114          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    115          void FontSet(unsigned char Font_NUM,unsigned char Color)
+   \                     FontSet:
+    116          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+    117          	unsigned char ucTemp=0;
+    118          	if(Font_NUM==0)
+   \   000009   EE           MOV     A,R6
+   \   00000A   90....       MOV     DPTR,#X_Witch
+   \   00000D   700A         JNZ     ??FontSet_0
+    119          	{
+    120          		X_Witch = 6;//7;
+   \   00000F   7406         MOV     A,#0x6
+   \   000011   F0           MOVX    @DPTR,A
+    121          		Y_Witch = 10;
+   \   000012   90....       MOV     DPTR,#Y_Witch
+   \   000015   740A         MOV     A,#0xa
+   \   000017   8008         SJMP    ??FontSet_1
+    122          	}
+    123          	else
+    124          	{
+    125          		X_Witch = 8;
+   \                     ??FontSet_0:
+   \   000019   7408         MOV     A,#0x8
+   \   00001B   F0           MOVX    @DPTR,A
+    126          		Y_Witch = 16;
+   \   00001C   90....       MOV     DPTR,#Y_Witch
+   \   00001F   7410         MOV     A,#0x10
+   \                     ??FontSet_1:
+   \   000021   F0           MOVX    @DPTR,A
+    127          	}
+    128          	ucTemp = (Font_NUM<<4)|Color;
+    129          	//设置ASCII字符的字型
+    130          	SPI_SSSet(0);					//SS置低电平			
+   \   000022                ; Setup parameters for call to function SPI_SSSet
+   \   000022   7900         MOV     R1,#0x0
+   \   000024   12....       LCALL   ??SPI_SSSet?relay
+    131          	SPI_Send(0x81);					//传送指令0x81
+   \   000027                ; Setup parameters for call to function SPI_Send
+   \   000027   7981         MOV     R1,#-0x7f
+   \   000029   80..         SJMP    ?Subroutine5
+    132          	SPI_Send(ucTemp);				//选择8X16的ASCII字体,字符色为黑色
+    133          	SPI_SSSet(1);					//完成操作置SS高电平	
+    134          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine16_0:
+   \   000000   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_18:
+   \   000003   7F01         MOV     R7,#0x1
+   \   000005   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   F9           MOV     R1,A
+   \   000001                REQUIRE ??Subroutine17_0
+   \   000001                ; // Fall through to label ??Subroutine17_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine17_0:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003                ; Setup parameters for call to function SPI_SSSet
+   \   000003   7901         MOV     R1,#0x1
+   \   000005   12....       LCALL   ??SPI_SSSet?relay
+   \   000008   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   EE           MOV     A,R6
+   \   000004   C4           SWAP    A
+   \   000005   54F0         ANL     A,#0xf0
+   \   000007   4F           ORL     A,R7
+   \   000008   80..         SJMP    ??Subroutine16_0
+    135          //========================================================================
+    136          // 函数: void FontMode(unsigned char Cover,unsigned char Color)
+    137          // 描述: 设置字符显示覆盖模式
+    138          // 参数: Cover  字符覆盖模式设置，0或1
+    139          //		 Color 覆盖模式为1时字符显示时的背景覆盖色 
+    140          // 返回: 无
+    141          // 备注: 
+    142          // 版本:
+    143          //      2008/11/27      First version
+    144          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    145          void FontMode(unsigned char Cover,unsigned char Color)
+   \                     FontMode:
+    146          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+    147          	unsigned char ucTemp=0;
+    148          	ucTemp = (Cover<<4)|Color;
+    149          	//设置ASCII字符的字型
+    150          	SPI_SSSet(0);					//SS置低电平			
+   \   000009                ; Setup parameters for call to function SPI_SSSet
+   \   000009   7900         MOV     R1,#0x0
+   \   00000B   12....       LCALL   ??SPI_SSSet?relay
+    151          	SPI_Send(0x89);					//传送指令0x81
+   \   00000E                ; Setup parameters for call to function SPI_Send
+   \   00000E   7989         MOV     R1,#-0x77
+   \   000010   80..         SJMP    ?Subroutine5
+    152          	SPI_Send(ucTemp);				//选择8X16的ASCII字体,字符色为黑色
+    153          	SPI_SSSet(1);					//完成操作置SS高电平	
+    154          }
+    155          //========================================================================
+    156          // 函数: void FontSet_cn(unsigned char Font_NUM,unsigned char Color)
+    157          // 描述: 汉字库字符字体设置
+    158          // 参数: Font_NUM 字体选择,以驱动所带的字库为准
+    159          //		 Color  文本颜色,仅作用于汉字库  
+    160          // 返回: 无
+    161          // 备注: 
+    162          // 版本:
+    163          //      2007/07/19      First version
+    164          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    165          void FontSet_cn(unsigned char Font_NUM,unsigned char Color)
+   \                     FontSet_cn:
+    166          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+    167          	unsigned char ucTemp=0;
+    168          	if(Font_NUM==0)
+   \   000009   EE           MOV     A,R6
+   \   00000A   90....       MOV     DPTR,#X_Witch_cn
+   \   00000D   7004         JNZ     ??FontSet_cn_0
+    169          	{
+    170          		X_Witch_cn = 12;
+   \   00000F   740C         MOV     A,#0xc
+   \   000011   8002         SJMP    ??FontSet_cn_1
+    171          		Y_Witch_cn = 12;
+    172          	}
+    173          	else
+    174          	{
+    175          		X_Witch_cn = 16;
+   \                     ??FontSet_cn_0:
+   \   000013   7410         MOV     A,#0x10
+   \                     ??FontSet_cn_1:
+   \   000015   F0           MOVX    @DPTR,A
+    176          		Y_Witch_cn = 16;
+   \   000016   90....       MOV     DPTR,#Y_Witch_cn
+   \   000019   F0           MOVX    @DPTR,A
+    177          	}
+    178          	ucTemp = (Font_NUM<<4)|Color;
+    179          	//设置ASCII字符的字型
+    180          	SPI_SSSet(0);					//SS置低电平			
+   \   00001A                ; Setup parameters for call to function SPI_SSSet
+   \   00001A   7900         MOV     R1,#0x0
+   \   00001C   12....       LCALL   ??SPI_SSSet?relay
+    181          	SPI_Send(0x82);					//传送指令0x81
+   \   00001F                ; Setup parameters for call to function SPI_Send
+   \   00001F   7982         MOV     R1,#-0x7e
+   \   000021                REQUIRE ?Subroutine5
+   \   000021                ; // Fall through to label ?Subroutine5
+    182          	SPI_Send(ucTemp);				//选择8X16的ASCII字体,字符色为黑色
+    183          	SPI_SSSet(1);					//完成操作置SS高电平	
+    184          }
+    185          //========================================================================
+    186          // 函数: void PutChar(unsigned char x,unsigned char y,unsigned char a) 
+    187          // 描述: 写入一个标准ASCII字符
+    188          // 参数: x  X轴坐标     y  Y轴坐标
+    189          //		 a  要显示的字符在字库中的偏移量  
+    190          // 返回: 无
+    191          // 备注: ASCII字符可直接输入ASCII码即可
+    192          // 版本:
+    193          //      2007/07/19      First version
+    194          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   EF           MOV     A,R7
+   \   000004   F9           MOV     R1,A
+   \   000005                REQUIRE ??Subroutine15_0
+   \   000005                ; // Fall through to label ??Subroutine15_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine15_0:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   EE           MOV     A,R6
+   \   000004                REQUIRE ??Subroutine16_0
+   \   000004                ; // Fall through to label ??Subroutine16_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    195          void PutChar(unsigned char x,unsigned char y,unsigned char a) 
+   \                     PutChar:
+    196          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 0,R1
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+   \   000009   EB           MOV     A,R3
+   \   00000A   12....       LCALL   ?Subroutine9 & 0xFFFF
+    197          	//显示ASCII字符
+    198          	SPI_SSSet(0);					//SS置低电平	
+    199          	SPI_Send(7);					//传送指令0x07
+    200          	SPI_Send(x);					//要显示字符的左上角的X轴位置
+   \                     ??CrossCallReturnLabel_8:
+   \   00000D                ; Setup parameters for call to function SPI_Send
+   \   00000D   A9..         MOV     R1,?V0 + 0
+   \   00000F   80..         SJMP    ?Subroutine1
+    201          	SPI_Send(y);					//要显示字符的左上角的Y轴位置
+    202          	SPI_Send(a);					//要显示字符ASCII字符的ASCII码值
+    203          	SPI_SSSet(1);					//完成操作置SS高电平
+    204          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000   FE           MOV     R6,A
+   \   000001                ; Setup parameters for call to function SPI_SSSet
+   \   000001                ; Setup parameters for call to function SPI_SSSet
+   \   000001                REQUIRE ??Subroutine18_0
+   \   000001                ; // Fall through to label ??Subroutine18_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine18_0:
+   \   000000   7900         MOV     R1,#0x0
+   \   000002   12....       LCALL   ??SPI_SSSet?relay
+   \   000005                ; Setup parameters for call to function SPI_Send
+   \   000005                ; Setup parameters for call to function SPI_Send
+   \   000005                ; Setup parameters for call to function SPI_Send
+   \   000005   7907         MOV     R1,#0x7
+   \   000007   12....       LCALL   ??SPI_Send?relay
+   \   00000A   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    205          void PutAbyte(unsigned char x,unsigned char y,unsigned char a){
+   \                     PutAbyte:
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   8B..         MOV     ?V0 + 2,R3
+    206              unsigned char High;
+    207              unsigned char Low;
+    208              High = (a >> 4)&0xf;
+   \   00000B   EB           MOV     A,R3
+   \   00000C   C4           SWAP    A
+   \   00000D   540F         ANL     A,#0xf
+   \   00000F   FF           MOV     R7,A
+    209              Low = (a & 0xf);
+   \   000010   740F         MOV     A,#0xf
+   \   000012   55..         ANL     A,?V0 + 2
+   \   000014   FE           MOV     R6,A
+    210              if(High > 9)
+   \   000015   EF           MOV     A,R7
+   \   000016   C3           CLR     C
+   \   000017   940A         SUBB    A,#0xa
+   \   000019   4004         JC      ??PutAbyte_0
+    211                High = High - 10 + 'A';
+   \   00001B   7437         MOV     A,#0x37
+   \   00001D   8002         SJMP    ??PutAbyte_1
+    212              else
+    213                High = High + '0';
+   \                     ??PutAbyte_0:
+   \   00001F   7430         MOV     A,#0x30
+   \                     ??PutAbyte_1:
+   \   000021   2F           ADD     A,R7
+   \   000022   FF           MOV     R7,A
+    214              if(Low > 9)
+   \   000023   EE           MOV     A,R6
+   \   000024   940A         SUBB    A,#0xa
+   \   000026   4004         JC      ??PutAbyte_2
+    215                Low = Low - 10 + 'A';
+   \   000028   7437         MOV     A,#0x37
+   \   00002A   8002         SJMP    ??PutAbyte_3
+    216              else
+    217                Low = Low + '0';
+   \                     ??PutAbyte_2:
+   \   00002C   7430         MOV     A,#0x30
+   \                     ??PutAbyte_3:
+   \   00002E   2E           ADD     A,R6
+   \   00002F   12....       LCALL   ?Subroutine9 & 0xFFFF
+    218              
+    219              //显示ASCII字符
+    220              SPI_SSSet(0);					//SS置低电平	
+    221              SPI_Send(7);					//传送指令0x07
+    222              SPI_Send(x);					//要显示字符的左上角的X轴位置
+   \                     ??CrossCallReturnLabel_9:
+   \   000032                ; Setup parameters for call to function SPI_Send
+   \   000032   A9..         MOV     R1,?V0 + 1
+   \   000034   12....       LCALL   ?Subroutine11 & 0xFFFF
+    223              SPI_Send(y);					//要显示字符的左上角的Y轴位置
+    224              SPI_Send(High);					//要显示字符ASCII字符的ASCII码值
+   \                     ??CrossCallReturnLabel_14:
+   \   000037   12....       LCALL   ?Subroutine6 & 0xFFFF
+    225              SPI_SSSet(1);					//完成操作置SS高电平
+    226              
+    227              //显示ASCII字符
+    228              SPI_SSSet(0);					//SS置低电平	
+   \                     ??CrossCallReturnLabel_19:
+   \   00003A                ; Setup parameters for call to function SPI_SSSet
+   \   00003A   12....       LCALL   ??Subroutine18_0 & 0xFFFF
+    229              SPI_Send(7);					//传送指令0x07
+    230              SPI_Send(x+8);					//要显示字符的左上角的X轴位置
+   \                     ??CrossCallReturnLabel_10:
+   \   00003D                ; Setup parameters for call to function SPI_Send
+   \   00003D   7408         MOV     A,#0x8
+   \   00003F   25..         ADD     A,?V0 + 1
+   \   000041   F9           MOV     R1,A
+   \   000042   12....       LCALL   ??SPI_Send?relay
+    231              SPI_Send(y);					//要显示字符的左上角的Y轴位置
+   \   000045                ; Setup parameters for call to function SPI_Send
+   \   000045   A9..         MOV     R1,?V0 + 0
+   \   000047                REQUIRE ?Subroutine2
+   \   000047                ; // Fall through to label ?Subroutine2
+    232              SPI_Send(Low);					//要显示字符ASCII字符的ASCII码值
+    233              SPI_SSSet(1);					//完成操作置SS高电平
+    234          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   EE           MOV     A,R6
+   \   000004   F9           MOV     R1,A
+   \   000005                REQUIRE ??Subroutine19_0
+   \   000005                ; // Fall through to label ??Subroutine19_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine19_0:
+   \   000000   12....       LCALL   ??Subroutine17_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_21:
+   \   000003   7F03         MOV     R7,#0x3
+   \   000005   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine11:
+   \   000000   12....       LCALL   ?Subroutine14 & 0xFFFF
+   \                     ??CrossCallReturnLabel_16:
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   EF           MOV     A,R7
+   \   000004   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine14:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   A9..         MOV     R1,?V0 + 0
+   \   000005   12....       LCALL   ??SPI_Send?relay
+   \   000008   22           RET
+    235          
+    236          //========================================================================
+    237          // 函数: void PutString(int x,int y,char *p)
+    238          // 描述: 在x、y为起始坐标处写入一串标准ASCII字符
+    239          // 参数: x  X轴坐标     y  Y轴坐标
+    240          //		 p  要显示的字符串  
+    241          // 返回: 无
+    242          // 备注: 仅能用于自带的ASCII字符串显示
+    243          // 版本:
+    244          //      2007/07/19      First version
+    245          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    246          void PutString(unsigned char x,unsigned char y,unsigned char *p)
+   \                     PutString:
+    247          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 3,R1
+   \   000007   8A..         MOV     ?V0 + 2,R2
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \   00000C   FF           MOV     R7,A
+   \   00000D   800E         SJMP    ??PutString_0
+    248          	while(*p!=0)
+    249          	{
+    250          		PutChar(x,y,*p);
+    251          		x += X_Witch;
+    252          		if((x + X_Witch) > Dis_X_MAX)
+    253          		{
+    254          			x = Dis_Zero;
+    255          			if((Dis_Y_MAX - y) < Y_Witch) break;
+    256          			else y += Y_Witch;
+   \                     ??PutString_1:
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   25..         ADD     A,?V0 + 2
+   \   000012   F5..         MOV     ?V0 + 2,A
+    257          		}
+    258          		p++;
+   \                     ??PutString_2:
+   \   000014   8E82         MOV     DPL,R6
+   \   000016   8F83         MOV     DPH,R7
+   \   000018   A3           INC     DPTR
+   \   000019   AE82         MOV     R6,DPL
+   \   00001B   AF83         MOV     R7,DPH
+   \                     ??PutString_0:
+   \   00001D   8E82         MOV     DPL,R6
+   \   00001F   8F83         MOV     DPH,R7
+   \   000021   E0           MOVX    A,@DPTR
+   \   000022   603B         JZ      ??PutString_3
+   \   000024                ; Setup parameters for call to function PutChar
+   \   000024   FB           MOV     R3,A
+   \   000025   AA..         MOV     R2,?V0 + 2
+   \   000027   A9..         MOV     R1,?V0 + 3
+   \   000029   12....       LCALL   ??PutChar?relay
+   \   00002C   90....       MOV     DPTR,#X_Witch
+   \   00002F   E0           MOVX    A,@DPTR
+   \   000030   25..         ADD     A,?V0 + 3
+   \   000032   F5..         MOV     ?V0 + 3,A
+   \   000034   F5..         MOV     ?V0 + 0,A
+   \   000036   E0           MOVX    A,@DPTR
+   \   000037   F8           MOV     R0,A
+   \   000038   E5..         MOV     A,?V0 + 0
+   \   00003A   28           ADD     A,R0
+   \   00003B   F8           MOV     R0,A
+   \   00003C   E4           CLR     A
+   \   00003D   3400         ADDC    A,#0x0
+   \   00003F   F9           MOV     R1,A
+   \   000040   E8           MOV     A,R0
+   \   000041   9480         SUBB    A,#-0x80
+   \   000043   E9           MOV     A,R1
+   \   000044   9400         SUBB    A,#0x0
+   \   000046   C3           CLR     C
+   \   000047   65D0         XRL     A,PSW
+   \   000049   33           RLC     A
+   \   00004A   40C8         JC      ??PutString_2
+   \   00004C   90....       MOV     DPTR,#Dis_Zero
+   \   00004F   E0           MOVX    A,@DPTR
+   \   000050   F5..         MOV     ?V0 + 3,A
+   \   000052   85....       MOV     ?V0 + 0,?V0 + 2
+   \   000055   743F         MOV     A,#0x3f
+   \   000057   C3           CLR     C
+   \   000058   95..         SUBB    A,?V0 + 0
+   \   00005A   12....       LCALL   ?Subroutine7 & 0xFFFF
+    259          	}
+   \                     ??CrossCallReturnLabel_12:
+   \   00005D   50B0         JNC     ??PutString_1
+    260          }
+   \                     ??PutString_3:
+   \   00005F                REQUIRE ?Subroutine3
+   \   00005F                ; // Fall through to label ?Subroutine3
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7F04         MOV     R7,#0x4
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   F8           MOV     R0,A
+   \   000001   95E0         SUBB    A,0xE0 /* A   */
+   \   000003   F9           MOV     R1,A
+   \   000004   90....       MOV     DPTR,#Y_Witch
+   \   000007                REQUIRE ??Subroutine20_0
+   \   000007                ; // Fall through to label ??Subroutine20_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine20_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   FA           MOV     R2,A
+   \   000002   C3           CLR     C
+   \   000003   E8           MOV     A,R0
+   \   000004   9A           SUBB    A,R2
+   \   000005   E9           MOV     A,R1
+   \   000006   9400         SUBB    A,#0x0
+   \   000008   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   00000A   65D0         XRL     A,PSW
+   \   00000C   33           RLC     A
+   \   00000D   22           RET
+    261          //========================================================================
+    262          // 函数: void PutChar_cn(unsigned char x,unsigned char y,unsigned short * GB) 
+    263          // 描述: 写入一个二级汉字库汉字
+    264          // 参数: x  X轴坐标     y  Y轴坐标
+    265          //		 a  GB码  
+    266          // 返回: 无
+    267          // 备注: 
+    268          // 版本:
+    269          //      2007/07/19      First version
+    270          //		2007/07/24		V1.2 for MCS51 Keil C
+    271          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    272          void PutChar_cn(unsigned char x,unsigned char y,unsigned char * GB) 
+   \                     PutChar_cn:
+    273          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \   00000C   FF           MOV     R7,A
+    274          	//显示ASCII字符
+    275          	SPI_SSSet(0);					//SS置低电平	
+   \   00000D                ; Setup parameters for call to function SPI_SSSet
+   \   00000D   7900         MOV     R1,#0x0
+   \   00000F   12....       LCALL   ??SPI_SSSet?relay
+    276          	SPI_Send(8);					//传送指令0x08
+   \   000012                ; Setup parameters for call to function SPI_Send
+   \   000012   7908         MOV     R1,#0x8
+   \   000014   12....       LCALL   ?Subroutine13 & 0xFFFF
+    277          	SPI_Send(x);					//要显示字符的左上角的X轴位置
+    278          	SPI_Send(y);					//要显示字符的左上角的Y轴位置
+    279          	
+    280          	SPI_Send(*(GB++));	//传送二级字库中汉字GB码的高八位值
+   \                     ??CrossCallReturnLabel_6:
+   \   000017                ; Setup parameters for call to function SPI_Send
+   \   000017   8E82         MOV     DPL,R6
+   \   000019   8F83         MOV     DPH,R7
+   \   00001B   E0           MOVX    A,@DPTR
+   \   00001C   F9           MOV     R1,A
+   \   00001D   12....       LCALL   ??SPI_Send?relay
+   \   000020   8E82         MOV     DPL,R6
+   \   000022   8F83         MOV     DPH,R7
+   \   000024   A3           INC     DPTR
+    281          	SPI_Send(*GB);		//传送二级字库中汉字GB码的低八位值
+   \   000025                ; Setup parameters for call to function SPI_Send
+   \   000025   E0           MOVX    A,@DPTR
+   \   000026   02....       LJMP    ??Subroutine22_0 & 0xFFFF
+    282          	SPI_SSSet(1);					//完成操作置SS高电平
+    283          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine22_0:
+   \   000000   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_20:
+   \   000003   7F02         MOV     R7,#0x2
+   \   000005   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine13:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   A9..         MOV     R1,?V0 + 1
+   \   000005   12....       LCALL   ?Subroutine14 & 0xFFFF
+   \                     ??CrossCallReturnLabel_17:
+   \   000008   22           RET
+    284          //========================================================================
+    285          // 函数: void PutString_cn(unsigned char x,unsigned char y,unsigned short *p)
+    286          // 描述: 在x、y为起始坐标处写入一串汉字字符
+    287          // 参数: x  X轴坐标     y  Y轴坐标
+    288          //		 p  要显示的字符串  
+    289          // 返回: 无
+    290          // 备注: 同PutChar_cn中的解释
+    291          // 版本:
+    292          //      2007/07/19      First version
+    293          //		2007/07/24		V1.2 for MCS51 Keil C
+    294          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    295          void PutString_cn(unsigned char x,unsigned char y,unsigned char *p)
+   \                     PutString_cn:
+    296          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 0,R1
+   \   000007   8A..         MOV     ?V0 + 1,R2
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \                     ??PutString_cn_0:
+   \   00000C   FF           MOV     R7,A
+   \   00000D   802A         SJMP    ??PutString_cn_1
+    297          	while(*p!=0)
+    298          	{
+    299          		if(*p<128)
+    300          		{
+    301          			PutChar(x,y,*p);
+   \                     ??PutString_cn_2:
+   \   00000F                ; Setup parameters for call to function PutChar
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   FB           MOV     R3,A
+   \   000011   AA..         MOV     R2,?V0 + 1
+   \   000013   A9..         MOV     R1,?V0 + 0
+   \   000015   12....       LCALL   ??PutChar?relay
+    302          			x += X_Witch+1;
+   \   000018   90....       MOV     DPTR,#X_Witch
+   \   00001B   12....       LCALL   ?Subroutine12 & 0xFFFF
+    303          		if((x/* + X_Witch*/) > Dis_X_MAX)
+   \                     ??CrossCallReturnLabel_4:
+   \   00001E   4010         JC      ??PutString_cn_3
+    304          		{
+    305          			x = Dis_Zero;
+   \   000020   12....       LCALL   ?Subroutine10 & 0xFFFF
+    306          			if((Dis_Y_MAX - y) < Y_Witch) break;
+   \                     ??CrossCallReturnLabel_2:
+   \   000023   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_13:
+   \   000026   404E         JC      ??PutString_cn_4
+    307          			else y += Y_Witch_cn;
+   \   000028   90....       MOV     DPTR,#Y_Witch_cn
+   \   00002B   E0           MOVX    A,@DPTR
+   \   00002C   25..         ADD     A,?V0 + 1
+   \   00002E   F5..         MOV     ?V0 + 1,A
+    308          		}
+    309          		p+=1;
+   \                     ??PutString_cn_3:
+   \   000030   8E82         MOV     DPL,R6
+   \   000032   8F83         MOV     DPH,R7
+   \   000034   A3           INC     DPTR
+   \   000035   AE82         MOV     R6,DPL
+   \   000037   AF83         MOV     R7,DPH
+    310          		}
+   \                     ??PutString_cn_1:
+   \   000039   8E82         MOV     DPL,R6
+   \   00003B   8F83         MOV     DPH,R7
+   \   00003D   E0           MOVX    A,@DPTR
+   \   00003E   6036         JZ      ??PutString_cn_4
+   \   000040   C3           CLR     C
+   \   000041   9480         SUBB    A,#-0x80
+   \   000043   40CA         JC      ??PutString_cn_2
+    311          		else
+    312          		{
+    313          		PutChar_cn(x,y,p);
+   \   000045                ; Setup parameters for call to function PutChar_cn
+   \   000045   EE           MOV     A,R6
+   \   000046   FC           MOV     R4,A
+   \   000047   EF           MOV     A,R7
+   \   000048   FD           MOV     R5,A
+   \   000049   AA..         MOV     R2,?V0 + 1
+   \   00004B   A9..         MOV     R1,?V0 + 0
+   \   00004D   12....       LCALL   ??PutChar_cn?relay
+    314          		x += X_Witch_cn+1;
+   \   000050   90....       MOV     DPTR,#X_Witch_cn
+   \   000053   12....       LCALL   ?Subroutine12 & 0xFFFF
+    315          		if((x/* + X_Witch_cn*/) > Dis_X_MAX)
+   \                     ??CrossCallReturnLabel_5:
+   \   000056   4014         JC      ??PutString_cn_5
+    316          		{
+    317          			x = Dis_Zero;
+   \   000058   12....       LCALL   ?Subroutine10 & 0xFFFF
+    318          			if((Dis_Y_MAX - y) < Y_Witch_cn) break;
+   \                     ??CrossCallReturnLabel_3:
+   \   00005B   F8           MOV     R0,A
+   \   00005C   95E0         SUBB    A,0xE0 /* A   */
+   \   00005E   F9           MOV     R1,A
+   \   00005F   90....       MOV     DPTR,#Y_Witch_cn
+   \   000062   12....       LCALL   ??Subroutine20_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_11:
+   \   000065   400F         JC      ??PutString_cn_4
+    319          			else y += Y_Witch_cn;
+   \   000067   E0           MOVX    A,@DPTR
+   \   000068   25..         ADD     A,?V0 + 1
+   \   00006A   F5..         MOV     ?V0 + 1,A
+    320          		}
+    321          		p+=2;
+   \                     ??PutString_cn_5:
+   \   00006C   EE           MOV     A,R6
+   \   00006D   2402         ADD     A,#0x2
+   \   00006F   0E           INC     R6
+   \   000070   0E           INC     R6
+   \   000071   EF           MOV     A,R7
+   \   000072   3400         ADDC    A,#0x0
+   \   000074   8096         SJMP    ??PutString_cn_0
+    322          		}
+    323          	}
+    324          }
+   \                     ??PutString_cn_4:
+   \   000076   02....       LJMP    ?Subroutine3 & 0xFFFF
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine12:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   04           INC     A
+   \   000002   25..         ADD     A,?V0 + 0
+   \   000004   F5..         MOV     ?V0 + 0,A
+   \   000006   C3           CLR     C
+   \   000007   9480         SUBB    A,#-0x80
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000   90....       MOV     DPTR,#Dis_Zero
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F5..         MOV     ?V0 + 0,A
+   \   000006   85....       MOV     ?V0 + 2,?V0 + 1
+   \   000009   743F         MOV     A,#0x3f
+   \   00000B   C3           CLR     C
+   \   00000C   95..         SUBB    A,?V0 + 2
+   \   00000E   22           RET
+    325          //========================================================================
+    326          // 函数: void SetPaintMode(unsigned char Mode,unsigned char Color)
+    327          // 描述: 绘图模式设置
+    328          // 参数: Mode 绘图模式    Color  像素点的颜色,相当于前景色  
+    329          // 返回: 无
+    330          // 备注: Mode无效
+    331          // 版本:
+    332          //      2007/07/19      First version
+    333          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    334          void SetPaintMode(unsigned char Mode,unsigned char Color)
+   \                     SetPaintMode:
+    335          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+    336          	unsigned char ucTemp=0;
+    337          	ucTemp = (Mode<<4)|Color;
+    338          	//设置绘图模式
+    339          	SPI_SSSet(0);					//SS置低电平			
+   \   000009                ; Setup parameters for call to function SPI_SSSet
+   \   000009   7900         MOV     R1,#0x0
+   \   00000B   12....       LCALL   ??SPI_SSSet?relay
+    340          	SPI_Send(0x83);					//传送指令0x83
+   \   00000E                ; Setup parameters for call to function SPI_Send
+   \   00000E   7983         MOV     R1,#-0x7d
+   \   000010   02....       LJMP    ?Subroutine5 & 0xFFFF
+    341          	SPI_Send(ucTemp);				//选择8X16的ASCII字体,字符色为黑色
+    342          	SPI_SSSet(1);					//完成操作置SS高电平
+    343          }
+    344          //========================================================================
+    345          // 函数: void PutPixel(unsigned char x,unsigned char y)
+    346          // 描述: 在x、y点上绘制一个前景色的点
+    347          // 参数: x  X轴坐标     y  Y轴坐标
+    348          // 返回: 无
+    349          // 备注: 使用前景色
+    350          // 版本:
+    351          //      2007/07/19      First version
+    352          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    353          void PutPixel(unsigned char x,unsigned char y)
+   \                     PutPixel:
+    354          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FF           MOV     R7,A
+   \   000007   EA           MOV     A,R2
+   \   000008   FE           MOV     R6,A
+    355          	//绘点操作	
+    356          	SPI_SSSet(0);					//SS置低电平
+   \   000009                ; Setup parameters for call to function SPI_SSSet
+   \   000009   7900         MOV     R1,#0x0
+   \   00000B   12....       LCALL   ??SPI_SSSet?relay
+    357          	SPI_Send(1);					//送指令0x01
+   \   00000E                ; Setup parameters for call to function SPI_Send
+   \   00000E   7901         MOV     R1,#0x1
+   \   000010   02....       LJMP    ?Subroutine1 & 0xFFFF
+    358          	SPI_Send(x);					//送第一个数据,即设置点的X轴位置
+    359          	SPI_Send(y);					//点的Y轴位置
+    360          	SPI_SSSet(1);					//完成操作置SS高电平
+    361          }
+    362          //========================================================================
+    363          // 函数: void Line(unsigned char s_x,unsigned char  s_y,
+    364          //					unsigned char  e_x,unsigned char  e_y)
+    365          // 描述: 在s_x、s_y为起始坐标，e_x、e_y为结束坐标绘制一条直线
+    366          // 参数: x  X轴坐标     y  Y轴坐标
+    367          // 返回: 无
+    368          // 备注: 使用前景色
+    369          // 版本:
+    370          //      2007/07/19      First version
+    371          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    372          void Line(unsigned char s_x,unsigned char  s_y,unsigned char  e_x,unsigned char  e_y)
+   \                     Line:
+    373          {  
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   EB           MOV     A,R3
+   \   00000A   FF           MOV     R7,A
+   \   00000B   EC           MOV     A,R4
+   \   00000C   FE           MOV     R6,A
+    374          	//绘制直线
+    375          	SPI_SSSet(0);					//SS置低电平
+   \   00000D                ; Setup parameters for call to function SPI_SSSet
+   \   00000D   7900         MOV     R1,#0x0
+   \   00000F   12....       LCALL   ??SPI_SSSet?relay
+    376          	SPI_Send(2);					//送指令0x02
+   \   000012                ; Setup parameters for call to function SPI_Send
+   \   000012   7902         MOV     R1,#0x2
+   \   000014   80..         SJMP    ?Subroutine4
+    377          	SPI_Send(s_x);					//起点X轴坐标
+    378          	SPI_Send(s_y);					//起点Y轴坐标
+    379          	SPI_Send(e_x);					//终点X轴坐标
+    380          	SPI_Send(e_y);					//终点Y轴坐标
+    381          	SPI_SSSet(1);					//完成操作置SS高电平
+    382          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   12....       LCALL   ??SPI_Send?relay
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   A9..         MOV     R1,?V0 + 1
+   \   000005                REQUIRE ??Subroutine21_0
+   \   000005                ; // Fall through to label ??Subroutine21_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine21_0:
+   \   000000   12....       LCALL   ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   000003   F9           MOV     R1,A
+   \   000004   12....       LCALL   ??SPI_Send?relay
+   \   000007                ; Setup parameters for call to function SPI_Send
+   \   000007                ; Setup parameters for call to function SPI_Send
+   \   000007                ; Setup parameters for call to function SPI_Send
+   \   000007   EE           MOV     A,R6
+   \   000008                REQUIRE ??Subroutine22_0
+   \   000008                ; // Fall through to label ??Subroutine22_0
+    383          //========================================================================
+    384          // 函数: void Circle(unsigned char x,unsigned char y,
+    385          //					unsigned char r,unsigned char mode)
+    386          // 描述: 以x,y为圆心R为半径画一个圆(mode = 0) or 圆面(mode = 1)
+    387          // 参数: 
+    388          // 返回: 无
+    389          // 备注: 画圆函数执行较慢，如果MCU有看门狗，请作好清狗的操作
+    390          // 版本:
+    391          //      2007/07/19      First version
+    392          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    393          void Circle(unsigned char x,unsigned char y,unsigned char r,unsigned char mode)
+   \                     Circle:
+    394          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 0,R1
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+   \   000009   EB           MOV     A,R3
+   \   00000A   FE           MOV     R6,A
+   \   00000B   8C..         MOV     ?V0 + 1,R4
+    395          	SPI_SSSet(0);
+   \   00000D                ; Setup parameters for call to function SPI_SSSet
+   \   00000D   7900         MOV     R1,#0x0
+   \   00000F   12....       LCALL   ??SPI_SSSet?relay
+    396          	if(mode)
+   \   000012   E5..         MOV     A,?V0 + 1
+   \   000014   6004         JZ      ??Circle_0
+    397          		SPI_Send(6);
+   \   000016                ; Setup parameters for call to function SPI_Send
+   \   000016   7906         MOV     R1,#0x6
+   \   000018   8002         SJMP    ??Circle_1
+    398          	else
+    399          		SPI_Send(5);
+   \                     ??Circle_0:
+   \   00001A                ; Setup parameters for call to function SPI_Send
+   \   00001A   7905         MOV     R1,#0x5
+   \                     ??Circle_1:
+   \   00001C   80..         SJMP    ??Subroutine21_0
+    400          	SPI_Send(x);
+    401          	SPI_Send(y);
+    402          	SPI_Send(r);
+    403          	SPI_SSSet(1);
+    404          }
+    405          //========================================================================
+    406          // 函数: void Rectangle(unsigned char left, unsigned char top, unsigned char right,
+    407          //				 unsigned char bottom, unsigned char mode)
+    408          // 描述: 以x,y为圆心R为半径画一个圆(mode = 0) or 圆面(mode = 1)
+    409          // 参数: left - 矩形的左上角横坐标，范围0到126
+    410          //		 top - 矩形的左上角纵坐标，范围0到62
+    411          //		 right - 矩形的右下角横坐标，范围1到127
+    412          //		 bottom - 矩形的右下角纵坐标，范围1到63
+    413          //		 Mode - 绘制模式，可以是下列数值之一：
+    414          //				0:	矩形框（空心矩形）
+    415          //				1:	矩形面（实心矩形）
+    416          // 返回: 无
+    417          // 备注: 画圆函数执行较慢，如果MCU有看门狗，请作好清狗的操作
+    418          // 版本:
+    419          //      2007/07/19      First version
+    420          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    421          void Rectangle1(unsigned char left, unsigned char top, unsigned char right,
+   \                     Rectangle1:
+    422          				 unsigned char bottom, unsigned char mode)
+    423          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   EB           MOV     A,R3
+   \   00000A   FF           MOV     R7,A
+   \   00000B   EC           MOV     A,R4
+   \   00000C   FE           MOV     R6,A
+   \   00000D   8D..         MOV     ?V0 + 2,R5
+    424          	SPI_SSSet(0);
+   \   00000F                ; Setup parameters for call to function SPI_SSSet
+   \   00000F   7900         MOV     R1,#0x0
+   \   000011   12....       LCALL   ??SPI_SSSet?relay
+    425          	if(mode)
+   \   000014   E5..         MOV     A,?V0 + 2
+   \   000016   6004         JZ      ??Rectangle1_0
+    426          		SPI_Send(4);
+   \   000018                ; Setup parameters for call to function SPI_Send
+   \   000018   7904         MOV     R1,#0x4
+   \   00001A   8002         SJMP    ??Rectangle1_1
+    427          	else
+    428          		SPI_Send(3);
+   \                     ??Rectangle1_0:
+   \   00001C                ; Setup parameters for call to function SPI_Send
+   \   00001C   7903         MOV     R1,#0x3
+   \                     ??Rectangle1_1:
+   \   00001E   12....       LCALL   ?Subroutine8 & 0xFFFF
+    429          	SPI_Send(left);
+    430          	SPI_Send(top);
+    431          	SPI_Send(right);
+   \                     ??CrossCallReturnLabel_0:
+   \   000021   02....       LJMP    ?Subroutine2 & 0xFFFF
+    432          	SPI_Send(bottom);
+    433          	SPI_SSSet(1);
+    434          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   12....       LCALL   ?Subroutine13 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003                ; Setup parameters for call to function SPI_Send
+   \   000003   EF           MOV     A,R7
+   \   000004   F9           MOV     R1,A
+   \   000005   22           RET
+    435          //========================================================================
+    436          // 函数: void ClrScreen(void)
+    437          // 描述: 清屏函数，执行全屏幕清除
+    438          // 参数: 
+    439          // 返回: 无
+    440          // 备注: 
+    441          // 版本:
+    442          //      2007/07/19      First version
+    443          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    444          void ClrScreen(void)
+   \                     ClrScreen:
+    445          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    446          	//清屏操作
+    447          	SPI_SSSet(0);					//SS置低电平
+   \   000004                ; Setup parameters for call to function SPI_SSSet
+   \   000004   7900         MOV     R1,#0x0
+   \   000006   12....       LCALL   ??SPI_SSSet?relay
+    448          	SPI_Send(0x80);					//送指令0x80
+   \   000009                ; Setup parameters for call to function SPI_Send
+   \   000009   7980         MOV     R1,#-0x80
+   \   00000B   12....       LCALL   ??Subroutine17_0 & 0xFFFF
+    449          	SPI_SSSet(1);					//完成操作置SS高电平
+    450          }
+   \                     ??CrossCallReturnLabel_22:
+   \   00000E   02....       LJMP    ?Subroutine0 & 0xFFFF
+    451          //========================================================================
+    452          // 函数: void PutBitmap(unsigned char x,unsigned char y,unsigned char width,
+    453          //						unsigned char high,unsigned char *p)
+    454          // 描述: 在x、y为起始坐标显示一个单色位图
+    455          // 参数: x  X轴坐标     y  Y轴坐标
+    456          //		 width 位图的宽度  
+    457          //		 high  位图的高度
+    458          //		 p  要显示的位图的字模首地址  
+    459          // 返回: 无
+    460          // 备注: 无
+    461          // 版本:
+    462          //      2008/11/27      First version
+    463          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    464          void PutBitmap(unsigned char x,unsigned char y,unsigned char width,unsigned char high,unsigned char *p)
+   \                     PutBitmap:
+    465          {
+   \   000000   74EF         MOV     A,#-0x11
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 17
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 2,R1
+   \   000007   8A..         MOV     ?V0 + 3,R2
+   \   000009   8B..         MOV     ?V0 + 4,R3
+   \   00000B   8C..         MOV     ?V0 + 5,R4
+   \   00000D   7411         MOV     A,#0x11
+   \   00000F   12....       LCALL   ?XSTACK_DISP0_8
+   \   000012   E0           MOVX    A,@DPTR
+   \   000013   FE           MOV     R6,A
+   \   000014   A3           INC     DPTR
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   FF           MOV     R7,A
+    466          	unsigned short Dat_Num;
+    467          	//unsigned short i;
+    468          	unsigned char ucTemp=0;
+   \   000017   75..00       MOV     ?V0 + 8,#0x0
+    469          	SPI_SSSet(0);					//SS置低电平
+   \   00001A                ; Setup parameters for call to function SPI_SSSet
+   \   00001A   7900         MOV     R1,#0x0
+   \   00001C   12....       LCALL   ??SPI_SSSet?relay
+    470          	SPI_Send(0x0e);	
+   \   00001F                ; Setup parameters for call to function SPI_Send
+   \   00001F   790E         MOV     R1,#0xe
+   \   000021   12....       LCALL   ??SPI_Send?relay
+    471          	SPI_Send(x);
+   \   000024                ; Setup parameters for call to function SPI_Send
+   \   000024   A9..         MOV     R1,?V0 + 2
+   \   000026   12....       LCALL   ??SPI_Send?relay
+    472          	SPI_Send(y);
+   \   000029                ; Setup parameters for call to function SPI_Send
+   \   000029   A9..         MOV     R1,?V0 + 3
+   \   00002B   12....       LCALL   ??SPI_Send?relay
+    473          	SPI_Send(width);
+   \   00002E                ; Setup parameters for call to function SPI_Send
+   \   00002E   A9..         MOV     R1,?V0 + 4
+   \   000030   12....       LCALL   ??SPI_Send?relay
+    474          	SPI_Send(high);
+   \   000033                ; Setup parameters for call to function SPI_Send
+   \   000033   A9..         MOV     R1,?V0 + 5
+   \   000035   12....       LCALL   ??SPI_Send?relay
+    475          	
+    476          	width = width+0x07;
+    477          	Dat_Num = (width>>3)*high;
+   \   000038   7407         MOV     A,#0x7
+   \   00003A   25..         ADD     A,?V0 + 4
+   \   00003C   13           RRC     A
+   \   00003D   13           RRC     A
+   \   00003E   13           RRC     A
+   \   00003F   541F         ANL     A,#0x1f
+   \   000041   85....       MOV     ?V0 + 6,?V0 + 5
+   \   000044   85..F0       MOV     B,?V0 + 6
+   \   000047   A4           MUL     AB
+   \   000048   F5..         MOV     ?V0 + 0,A
+   \   00004A   E5F0         MOV     A,B
+   \   00004C   F5..         MOV     ?V0 + 1,A
+   \   00004E   8025         SJMP    ??PutBitmap_0
+    478          	while(Dat_Num--)
+    479          	{
+    480          	  	ucTemp++;
+   \                     ??PutBitmap_1:
+   \   000050   05..         INC     ?V0 + 8
+    481          		SPI_Send(*p);
+   \   000052                ; Setup parameters for call to function SPI_Send
+   \   000052   8E82         MOV     DPL,R6
+   \   000054   8F83         MOV     DPH,R7
+   \   000056   E0           MOVX    A,@DPTR
+   \   000057   F9           MOV     R1,A
+   \   000058   12....       LCALL   ??SPI_Send?relay
+    482          		if(ucTemp>250)				//如果改换别的MCU时,这里可能需要适当的调整
+   \   00005B   E5..         MOV     A,?V0 + 8
+   \   00005D   C3           CLR     C
+   \   00005E   94FB         SUBB    A,#-0x5
+   \   000060   400A         JC      ??PutBitmap_2
+    483          		{
+    484          			TimeDelay(28);			//以及此处,以保证前面传送到LCD模块中的数据已被处理完
+   \   000062                ; Setup parameters for call to function TimeDelay
+   \   000062   7A1C         MOV     R2,#0x1c
+   \   000064   7B00         MOV     R3,#0x0
+   \   000066   12....       LCALL   ??TimeDelay?relay
+    485          			ucTemp = 0;
+   \   000069   75..00       MOV     ?V0 + 8,#0x0
+    486          		}
+    487          		p++;
+   \                     ??PutBitmap_2:
+   \   00006C   8E82         MOV     DPL,R6
+   \   00006E   8F83         MOV     DPH,R7
+   \   000070   A3           INC     DPTR
+   \   000071   AE82         MOV     R6,DPL
+   \   000073   AF83         MOV     R7,DPH
+    488          	}
+   \                     ??PutBitmap_0:
+   \   000075   A8..         MOV     R0,?V0 + 0
+   \   000077   A9..         MOV     R1,?V0 + 1
+   \   000079   E8           MOV     A,R0
+   \   00007A   24FF         ADD     A,#-0x1
+   \   00007C   F5..         MOV     ?V0 + 0,A
+   \   00007E   E9           MOV     A,R1
+   \   00007F   34FF         ADDC    A,#-0x1
+   \   000081   F5..         MOV     ?V0 + 1,A
+   \   000083   E8           MOV     A,R0
+   \   000084   49           ORL     A,R1
+   \   000085   70C9         JNZ     ??PutBitmap_1
+    489          	SPI_SSSet(1);					//完成操作置SS高电平
+   \   000087                ; Setup parameters for call to function SPI_SSSet
+   \   000087   7901         MOV     R1,#0x1
+   \   000089   12....       LCALL   ??SPI_SSSet?relay
+    490          }
+   \   00008C   7F09         MOV     R7,#0x9
+   \   00008E   02....       LJMP    ?BANKED_LEAVE_XDATA
+    491          
+    492          //========================================================================
+    493          // 函数: void ShowChar(unsigned char x,unsigned char y,unsigned char Num,unsigned char type)
+    494          // 描述: 在x、y的位置为显示区域的左上角，显示一个unsigned char型数
+    495          // 参数: x  X轴坐标     y  Y轴坐标    Num  要显示的8位宽度的数据  type  显示特性(0,1,2)
+    496          // 返回: 无
+    497          // 备注: 
+    498          // 版本:
+    499          //      2008/11/27      First version
+    500          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    501          void ShowChar(unsigned char x,unsigned char y,unsigned char a,unsigned char type) 
+   \                     ShowChar:
+    502          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   EB           MOV     A,R3
+   \   00000A   FF           MOV     R7,A
+   \   00000B   EC           MOV     A,R4
+   \   00000C   FE           MOV     R6,A
+    503          	//显示ASCII字符
+    504          	SPI_SSSet(0);					//SS置低电平	
+   \   00000D                ; Setup parameters for call to function SPI_SSSet
+   \   00000D   7900         MOV     R1,#0x0
+   \   00000F   12....       LCALL   ??SPI_SSSet?relay
+    505          	SPI_Send(11);					//传送指令0x0B
+   \   000012                ; Setup parameters for call to function SPI_Send
+   \   000012   790B         MOV     R1,#0xb
+   \   000014   02....       LJMP    ?Subroutine4 & 0xFFFF
+    506          	SPI_Send(x);					//要显示字符的左上角的X轴位置
+    507          	SPI_Send(y);					//要显示字符的左上角的Y轴位置
+    508          	SPI_Send(a);					//要显示的数据
+    509          	SPI_Send(type);
+    510          	SPI_SSSet(1);					//完成操作置SS高电平
+    511          }
+    512          //========================================================================
+    513          // 函数: void ShowShort(unsigned char x,unsigned char y,unsigned short Num,unsigned char type)
+    514          // 描述: 在x、y的位置为显示区域的左上角，显示一个unsigned short型数（16位宽度）
+    515          // 参数: x  X轴坐标     y  Y轴坐标    Num  要显示的16位宽度的数据  type  显示特性(0,1,2)
+    516          // 返回: 无
+    517          // 备注: 
+    518          // 版本:
+    519          //      2008/11/27      First version
+    520          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    521          void ShowShort(unsigned char x,unsigned char y,unsigned short a,unsigned char type) 
+   \                     ShowShort:
+    522          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0 + 1,R1
+   \   000007   8A..         MOV     ?V0 + 0,R2
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \   00000C   FF           MOV     R7,A
+   \   00000D   8B..         MOV     ?V0 + 2,R3
+    523          	//显示ASCII字符
+    524          	SPI_SSSet(0);					//SS置低电平	
+   \   00000F                ; Setup parameters for call to function SPI_SSSet
+   \   00000F   7900         MOV     R1,#0x0
+   \   000011   12....       LCALL   ??SPI_SSSet?relay
+    525          	SPI_Send(12);					//传送指令0x0C
+   \   000014                ; Setup parameters for call to function SPI_Send
+   \   000014   790C         MOV     R1,#0xc
+   \   000016   12....       LCALL   ?Subroutine8 & 0xFFFF
+    526          	SPI_Send(x);					//要显示字符的左上角的X轴位置
+    527          	SPI_Send(y);					//要显示字符的左上角的Y轴位置
+    528          	SPI_Send((unsigned char)(a>>8));
+   \                     ??CrossCallReturnLabel_1:
+   \   000019   12....       LCALL   ??SPI_Send?relay
+    529          	SPI_Send((unsigned char)a);
+   \   00001C                ; Setup parameters for call to function SPI_Send
+   \   00001C   EE           MOV     A,R6
+   \   00001D   F9           MOV     R1,A
+   \   00001E   12....       LCALL   ??SPI_Send?relay
+    530          	SPI_Send(type);					//要显示字符ASCII字符的ASCII码值
+   \   000021                ; Setup parameters for call to function SPI_Send
+   \   000021   A9..         MOV     R1,?V0 + 2
+   \   000023   02....       LJMP    ??Subroutine19_0 & 0xFFFF
+    531          	SPI_SSSet(1);					//完成操作置SS高电平
+    532          }
+    533          //========================================================================
+    534          // 函数: void SetBackLight(unsigned char Deg)
+    535          // 描述: 设置背光亮度等级
+    536          // 参数: Grade  0~127的等级
+    537          // 返回: 无
+    538          // 备注: 
+    539          // 版本:
+    540          //      2008/11/27      First version
+    541          //========================================================================
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    542          void SetBackLight(unsigned char Deg) 
+   \                     SetBackLight:
+    543          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+    544          	//显示ASCII字符
+    545          	SPI_SSSet(0);					//SS置低电平	
+   \   000007                ; Setup parameters for call to function SPI_SSSet
+   \   000007   7900         MOV     R1,#0x0
+   \   000009   12....       LCALL   ??SPI_SSSet?relay
+    546          	SPI_Send(0x8a);					//传送指令0x07
+   \   00000C                ; Setup parameters for call to function SPI_Send
+   \   00000C   798A         MOV     R1,#-0x76
+   \   00000E   02....       LJMP    ??Subroutine15_0 & 0xFFFF
+    547          	SPI_Send(Deg);					//要显示字符的左上角的X轴位置
+    548          	SPI_SSSet(1);					//完成操作置SS高电平
+    549          }
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for X_Witch>`:
+   \   000000   06           DB 6
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for Y_Witch>`:
+   \   000000   0A           DB 10
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for X_Witch_cn>`:
+   \   000000   10           DB 16
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for Y_Witch_cn>`:
+   \   000000   10           DB 16
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??TimeDelay?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    TimeDelay
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??LCD_Init?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    LCD_Init
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SPI_SSSet?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SPI_SSSet
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SPI_Send?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SPI_Send
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??FontSet?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    FontSet
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??FontMode?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    FontMode
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??FontSet_cn?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    FontSet_cn
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??PutChar?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    PutChar
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??PutAbyte?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    PutAbyte
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??PutString?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    PutString
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??PutChar_cn?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    PutChar_cn
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??PutString_cn?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    PutString_cn
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SetPaintMode?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SetPaintMode
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??PutPixel?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    PutPixel
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Line?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Line
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Circle?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Circle
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Rectangle1?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Rectangle1
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??ClrScreen?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ClrScreen
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??PutBitmap?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    PutBitmap
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??ShowChar?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ShowChar
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??ShowShort?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ShowShort
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SetBackLight?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SetBackLight
+    550          
+    551          
+
+   Maximum stack usage in bytes:
+
+     Function        ISTACK PSTACK XSTACK
+     --------        ------ ------ ------
+     Circle              0      0     10
+       -> SPI_SSSet      0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_SSSet      0      0     20
+     ClrScreen           2      0      0
+       -> SPI_SSSet      4      0      0
+       -> SPI_Send       4      0      0
+       -> SPI_SSSet      4      0      0
+     FontMode            0      0      9
+       -> SPI_SSSet      0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_SSSet      0      0     18
+     FontSet             0      0      9
+       -> SPI_SSSet      0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_SSSet      0      0     18
+     FontSet_cn          0      0      9
+       -> SPI_SSSet      0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_SSSet      0      0     18
+     LCD_Init            2      0      0
+       -> TimeDelay      4      0      0
+       -> TimeDelay      4      0      0
+     Line                0      0     10
+       -> SPI_SSSet      0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_SSSet      0      0     20
+     PutAbyte            0      0     11
+       -> SPI_SSSet      0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_SSSet      0      0     22
+       -> SPI_SSSet      0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_SSSet      0      0     22
+     PutBitmap           0      0     19
+       -> SPI_SSSet      0      0     34
+       -> SPI_Send       0      0     34
+       -> SPI_Send       0      0     34
+       -> SPI_Send       0      0     34
+       -> SPI_Send       0      0     34
+       -> SPI_Send       0      0     34
+       -> SPI_Send       0      0     34
+       -> TimeDelay      0      0     34
+       -> SPI_SSSet      0      0     34
+     PutChar             0      0     21
+       -> SPI_SSSet      0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_SSSet      0      0     18
+     PutChar_cn          0      0     22
+       -> SPI_SSSet      0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_SSSet      0      0     20
+     PutPixel            0      0      9
+       -> SPI_SSSet      0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_SSSet      0      0     18
+     PutString           0      0     12
+       -> PutChar        0      0     24
+     PutString_cn        0      0     12
+       -> PutChar        0      0     24
+       -> PutChar_cn     0      0     24
+     Rectangle1          0      0     11
+       -> SPI_SSSet      0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_SSSet      0      0     22
+     SPI_SSSet           0      0     17
+     SPI_Send            0      0     17
+     SetBackLight        0      0      9
+       -> SPI_SSSet      0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_SSSet      0      0     18
+     SetPaintMode        0      0      9
+       -> SPI_SSSet      0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_Send       0      0     18
+       -> SPI_SSSet      0      0     18
+     ShowChar            0      0     10
+       -> SPI_SSSet      0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_Send       0      0     20
+       -> SPI_SSSet      0      0     20
+     ShowShort           0      0     11
+       -> SPI_SSSet      0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_Send       0      0     22
+       -> SPI_SSSet      0      0     22
+     TimeDelay           0      0     17
+
+
+   Segment part sizes:
+
+     Function/Label                Bytes
+     --------------                -----
+     _A_P1                            1
+     P1SEL                            1
+     P1DIR                            1
+     X_Witch                          1
+     Y_Witch                          1
+     X_Witch_cn                       1
+     Y_Witch_cn                       1
+     Dis_Zero                         1
+     TimeDelay                       17
+     LCD_Init                        28
+     ?Subroutine0                     7
+     SPI_SSSet                       12
+     SPI_Send                        27
+     FontSet                         43
+     ??Subroutine16_0                 8
+     ?Subroutine6                     1
+     ??Subroutine17_0                 9
+     ?Subroutine5                    10
+     FontMode                        18
+     FontSet_cn                      33
+     ?Subroutine1                     5
+     ??Subroutine15_0                 4
+     PutChar                         17
+     ?Subroutine9                     1
+     ??Subroutine18_0                11
+     PutAbyte                        71
+     ?Subroutine2                     5
+     ??Subroutine19_0                 8
+     ?Subroutine11                    5
+     ?Subroutine14                    9
+     PutString                       95
+     ?Subroutine3                     5
+     ?Subroutine7                     7
+     ??Subroutine20_0                14
+     PutChar_cn                      41
+     ??Subroutine22_0                 8
+     ?Subroutine13                    9
+     PutString_cn                   121
+     ?Subroutine12                   10
+     ?Subroutine10                   15
+     SetPaintMode                    19
+     PutPixel                        19
+     Line                            22
+     ?Subroutine4                     5
+     ??Subroutine21_0                 8
+     Circle                          30
+     Rectangle1                      36
+     ?Subroutine8                     6
+     ClrScreen                       17
+     PutBitmap                      145
+     ShowChar                        23
+     ShowShort                       38
+     SetBackLight                    17
+     ?<Initializer for X_Witch>       1
+     ?<Initializer for Y_Witch>       1
+     ?<Initializer for X_Witch_cn>    1
+     ?<Initializer for Y_Witch_cn>    1
+     ??TimeDelay?relay                6
+     ??LCD_Init?relay                 6
+     ??SPI_SSSet?relay                6
+     ??SPI_Send?relay                 6
+     ??FontSet?relay                  6
+     ??FontMode?relay                 6
+     ??FontSet_cn?relay               6
+     ??PutChar?relay                  6
+     ??PutAbyte?relay                 6
+     ??PutString?relay                6
+     ??PutChar_cn?relay               6
+     ??PutString_cn?relay             6
+     ??SetPaintMode?relay             6
+     ??PutPixel?relay                 6
+     ??Line?relay                     6
+     ??Circle?relay                   6
+     ??Rectangle1?relay               6
+     ??ClrScreen?relay                6
+     ??PutBitmap?relay                6
+     ??ShowChar?relay                 6
+     ??ShowShort?relay                6
+     ??SetBackLight?relay             6
+
+ 
+ 1 059 bytes in segment BANKED_CODE
+   132 bytes in segment BANK_RELAYS
+     3 bytes in segment SFR_AN
+     4 bytes in segment XDATA_I
+     4 bytes in segment XDATA_ID
+     1 byte  in segment XDATA_Z
+ 
+ 1 195 bytes of CODE  memory
+     0 bytes of DATA  memory (+ 3 bytes shared)
+     5 bytes of XDATA memory
+
+Errors: none
+Warnings: none

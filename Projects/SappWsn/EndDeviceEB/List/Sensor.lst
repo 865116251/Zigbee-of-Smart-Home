@@ -1,0 +1,854 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.10.3.10338/W32 for 8051         31/May/2019  14:51:35 #
+# Copyright 2004-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#    Source file        =  F:\cc2530testing\ZStack-CC2530-IOT2\Components\hal #
+#                          \target\CC2530EB\Sensor.c                          #
+#    Command line       =  -f F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sa #
+#                          ppWsn\..\zstack\Tools\CC2530DB\f8wEndev.cfg        #
+#                          (-DCPU32MHZ -DROOT=__near_func                     #
+#                          -DMAC_CFG_TX_DATA_MAX=3 -DMAC_CFG_TX_MAX=6         #
+#                          -DMAC_CFG_RX_MAX=3) -f F:\cc2530testing\ZStack-CC2 #
+#                          530-IOT2\Projects\SappWsn\..\zstack\Tools\CC2530DB #
+#                          \f8wConfig.cfg (-DZIGBEEPRO -DSECURE=0             #
+#                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                  #
+#                          -DDEFAULT_CHANLIST=0x00020000                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0x0213                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)   #
+#                          -DREJOIN_POLL_RATE=440 F:\cc2530testing\ZStack-CC2 #
+#                          530-IOT2\Components\hal\target\CC2530EB\Sensor.c   #
+#                          -D NWK_AUTO_POLL -D ZTOOL_P1 -D xxZAPP_P2 -D       #
+#                          MT_TASK -D xMT_SYS_FUNC -D MT_ZDO_FUNC -lC         #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\EndDeviceEB\List\ -lA                           #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\EndDeviceEB\List\ --diag_suppress Pe001,Pa010   #
+#                          -o F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sa #
+#                          ppWsn\EndDeviceEB\Obj\ -e --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                   #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 16    #
+#                          -I F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sa #
+#                          ppWsn\ -I F:\cc2530testing\ZStack-CC2530-IOT2\Proj #
+#                          ects\SappWsn\Source\ -I F:\cc2530testing\ZStack-CC #
+#                          2530-IOT2\Projects\SappWsn\..\zstack\ZMain\TI2530D #
+#                          B\ -I F:\cc2530testing\ZStack-CC2530-IOT2\Projects #
+#                          \SappWsn\..\..\Components\hal\include\ -I          #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\hal\target\CC2530EB\ -I        #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\mac\include\ -I                #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\mac\high_level\ -I             #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\mac\low_level\srf04\ -I        #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\mac\low_level\srf04\single_chi #
+#                          p\ -I F:\cc2530testing\ZStack-CC2530-IOT2\Projects #
+#                          \SappWsn\..\..\Components\mt\ -I                   #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\osal\include\ -I               #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\services\saddr\ -I             #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\services\sdata\ -I             #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\stack\af\ -I                   #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\stack\nwk\ -I                  #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\stack\sapi\ -I                 #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\stack\sec\ -I                  #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\stack\sys\ -I                  #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\stack\zdo\ -I                  #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\zmac\ -I                       #
+#                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\..\..\Components\zmac\f8w\ -Ohz                 #
+#                          --require_prototypes                               #
+#    List file          =  F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\EndDeviceEB\List\Sensor.lst                     #
+#    Object file        =  F:\cc2530testing\ZStack-CC2530-IOT2\Projects\SappW #
+#                          sn\EndDeviceEB\Obj\Sensor.r51                      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+F:\cc2530testing\ZStack-CC2530-IOT2\Components\hal\target\CC2530EB\Sensor.c
+      1          #include "Sensor.h"
+
+   \                                 In  segment SFR_AN, at 0x80
+   \   union <unnamed> volatile __sfr _A_P0
+   \                     _A_P0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x88
+   \   union <unnamed> volatile __sfr _A_TCON
+   \                     _A_TCON:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x90
+   \   union <unnamed> volatile __sfr _A_P1
+   \                     _A_P1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x9d
+   \   unsigned char volatile __sfr SLEEPSTA
+   \                     SLEEPSTA:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xa0
+   \   union <unnamed> volatile __sfr _A_P2
+   \                     _A_P2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xa8
+   \   union <unnamed> volatile __sfr _A_IEN0
+   \                     _A_IEN0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb4
+   \   unsigned char volatile __sfr ADCCON1
+   \                     ADCCON1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb5
+   \   unsigned char volatile __sfr ADCCON2
+   \                     ADCCON2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xba
+   \   unsigned char volatile __sfr ADCL
+   \                     ADCL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xbb
+   \   unsigned char volatile __sfr ADCH
+   \                     ADCH:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xbe
+   \   unsigned char volatile __sfr SLEEPCMD
+   \                     SLEEPCMD:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc6
+   \   unsigned char volatile __sfr CLKCONCMD
+   \                     CLKCONCMD:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xe8
+   \   union <unnamed> volatile __sfr _A_IRCON2
+   \                     _A_IRCON2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf1
+   \   unsigned char volatile __sfr PERCFG
+   \                     PERCFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf2
+   \   unsigned char volatile __sfr ADCCFG
+   \                     ADCCFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf3
+   \   unsigned char volatile __sfr P0SEL
+   \                     P0SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf4
+   \   unsigned char volatile __sfr P1SEL
+   \                     P1SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf5
+   \   unsigned char volatile __sfr P2SEL
+   \                     P2SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf8
+   \   union <unnamed> volatile __sfr _A_U1CSR
+   \                     _A_U1CSR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf9
+   \   unsigned char volatile __sfr U1DBUF
+   \                     U1DBUF:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfa
+   \   unsigned char volatile __sfr U1BAUD
+   \                     U1BAUD:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfc
+   \   unsigned char volatile __sfr U1GCR
+   \                     U1GCR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfd
+   \   unsigned char volatile __sfr P0DIR
+   \                     P0DIR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfe
+   \   unsigned char volatile __sfr P1DIR
+   \                     P1DIR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xff
+   \   unsigned char volatile __sfr P2DIR
+   \                     P2DIR:
+   \   000000                DS 1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      2          uint8 GetADValue(void)
+   \                     GetADValue:
+      3          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+      4              uint8 v = 0;
+      5              ADCCFG = 0x01;
+   \   000000   75F201       MOV     0xf2,#0x1
+      6              ADCCON1 = 0x33;
+   \   000003   75B433       MOV     0xb4,#0x33
+      7              ADCCON2 = 0xB0;
+   \   000006   75B5B0       MOV     0xb5,#-0x50
+      8              ADCCON1 |= 0x40;
+   \   000009   43B440       ORL     0xb4,#0x40
+      9              while(!(ADCCON1 & 0x80));
+   \                     ??GetADValue_0:
+   \   00000C   E5B4         MOV     A,0xb4
+   \   00000E   A2E7         MOV     C,0xE0 /* A   */.7
+   \   000010   50FA         JNC     ??GetADValue_0
+     10              v = ADCL;
+   \   000012   E5BA         MOV     A,0xba
+     11              v = ADCH;
+     12              return(v);
+   \   000014   A9BB         MOV     R1,0xbb
+   \   000016   02....       LJMP    ?BRET
+   \   000019                REQUIRE ADCCFG
+   \   000019                REQUIRE ADCCON1
+   \   000019                REQUIRE ADCCON2
+   \   000019                REQUIRE ADCL
+   \   000019                REQUIRE ADCH
+     13          }
+     14          // pull: 0 - disable, 1 - pulldown, 2 - pullup
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     15          void SetIOInput(uint8 group, uint8 bit, uint8 pull)
+   \                     SetIOInput:
+     16          {
+   \   000000   C0..         PUSH    ?V0 + 0
+   \   000002   C0..         PUSH    ?V0 + 1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     17             switch(group)
+   \   000004   E9           MOV     A,R1
+   \   000005   6008         JZ      ??SetIOInput_0
+   \   000007   14           DEC     A
+   \   000008   601A         JZ      ??SetIOInput_1
+   \   00000A   14           DEC     A
+   \   00000B   602C         JZ      ??SetIOInput_2
+   \   00000D   803D         SJMP    ??SetIOInput_3
+     18             {
+     19             case 0: P0DIR &= ~(1 << bit); P0SEL &= ~(1 << bit); break;
+   \                     ??SetIOInput_0:
+   \   00000F   75..01       MOV     ?V0 + 0,#0x1
+   \   000012   75..00       MOV     ?V0 + 1,#0x0
+   \   000015   EA           MOV     A,R2
+   \   000016   78..         MOV     R0,#?V0 + 0
+   \   000018   12....       LCALL   ?S_SHL
+   \   00001B   E5..         MOV     A,?V0 + 0
+   \   00001D   F4           CPL     A
+   \   00001E   52FD         ANL     0xfd,A
+   \   000020   52F3         ANL     0xf3,A
+   \   000022   8028         SJMP    ??SetIOInput_3
+     20             case 1: P1DIR &= ~(1 << bit); P1SEL &= ~(1 << bit); break;
+   \                     ??SetIOInput_1:
+   \   000024   75..01       MOV     ?V0 + 0,#0x1
+   \   000027   75..00       MOV     ?V0 + 1,#0x0
+   \   00002A   EA           MOV     A,R2
+   \   00002B   78..         MOV     R0,#?V0 + 0
+   \   00002D   12....       LCALL   ?S_SHL
+   \   000030   E5..         MOV     A,?V0 + 0
+   \   000032   F4           CPL     A
+   \   000033   52FE         ANL     0xfe,A
+   \   000035   52F4         ANL     0xf4,A
+   \   000037   8013         SJMP    ??SetIOInput_3
+     21             case 2: P2DIR &= ~(1 << bit); P2SEL &= ~(1 << bit); break;
+   \                     ??SetIOInput_2:
+   \   000039   75..01       MOV     ?V0 + 0,#0x1
+   \   00003C   75..00       MOV     ?V0 + 1,#0x0
+   \   00003F   EA           MOV     A,R2
+   \   000040   78..         MOV     R0,#?V0 + 0
+   \   000042   12....       LCALL   ?S_SHL
+   \   000045   E5..         MOV     A,?V0 + 0
+   \   000047   F4           CPL     A
+   \   000048   52FF         ANL     0xff,A
+   \   00004A   52F5         ANL     0xf5,A
+     22             }
+     23          }
+   \                     ??SetIOInput_3:
+   \   00004C   02....       LJMP    ?Subroutine0 & 0xFFFF
+   \   00004F                REQUIRE P0DIR
+   \   00004F                REQUIRE P0SEL
+   \   00004F                REQUIRE P1DIR
+   \   00004F                REQUIRE P1SEL
+   \   00004F                REQUIRE P2DIR
+   \   00004F                REQUIRE P2SEL
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D0..         POP     ?V0 + 1
+   \   000002   D0..         POP     ?V0 + 0
+   \   000004   02....       LJMP    ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     24          void SetIOOutput(uint8 group, uint8 bit)
+   \                     SetIOOutput:
+     25          {
+   \   000000   C0..         PUSH    ?V0 + 0
+   \   000002   C0..         PUSH    ?V0 + 1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     26             switch(group)
+   \   000004   E9           MOV     A,R1
+   \   000005   6008         JZ      ??SetIOOutput_0
+   \   000007   14           DEC     A
+   \   000008   601A         JZ      ??SetIOOutput_1
+   \   00000A   14           DEC     A
+   \   00000B   602C         JZ      ??SetIOOutput_2
+   \   00000D   803D         SJMP    ??SetIOOutput_3
+     27             {
+     28             case 0: P0DIR |= (1 << bit); P0SEL &= ~(1 << bit); break;
+   \                     ??SetIOOutput_0:
+   \   00000F   75..01       MOV     ?V0 + 0,#0x1
+   \   000012   75..00       MOV     ?V0 + 1,#0x0
+   \   000015   EA           MOV     A,R2
+   \   000016   78..         MOV     R0,#?V0 + 0
+   \   000018   12....       LCALL   ?S_SHL
+   \   00001B   E5..         MOV     A,?V0 + 0
+   \   00001D   42FD         ORL     0xfd,A
+   \   00001F   F4           CPL     A
+   \   000020   52F3         ANL     0xf3,A
+   \   000022   8028         SJMP    ??SetIOOutput_3
+     29             case 1: P1DIR |= (1 << bit); P1SEL &= ~(1 << bit); break;
+   \                     ??SetIOOutput_1:
+   \   000024   75..01       MOV     ?V0 + 0,#0x1
+   \   000027   75..00       MOV     ?V0 + 1,#0x0
+   \   00002A   EA           MOV     A,R2
+   \   00002B   78..         MOV     R0,#?V0 + 0
+   \   00002D   12....       LCALL   ?S_SHL
+   \   000030   E5..         MOV     A,?V0 + 0
+   \   000032   42FE         ORL     0xfe,A
+   \   000034   F4           CPL     A
+   \   000035   52F4         ANL     0xf4,A
+   \   000037   8013         SJMP    ??SetIOOutput_3
+     30             case 2: P2DIR |= (1 << bit); P2SEL &= ~(1 << bit); break;
+   \                     ??SetIOOutput_2:
+   \   000039   75..01       MOV     ?V0 + 0,#0x1
+   \   00003C   75..00       MOV     ?V0 + 1,#0x0
+   \   00003F   EA           MOV     A,R2
+   \   000040   78..         MOV     R0,#?V0 + 0
+   \   000042   12....       LCALL   ?S_SHL
+   \   000045   E5..         MOV     A,?V0 + 0
+   \   000047   42FF         ORL     0xff,A
+   \   000049   F4           CPL     A
+   \   00004A   52F5         ANL     0xf5,A
+     31             }
+     32          }
+   \                     ??SetIOOutput_3:
+   \   00004C   80..         SJMP    ?Subroutine0
+   \   00004E                REQUIRE P0DIR
+   \   00004E                REQUIRE P0SEL
+   \   00004E                REQUIRE P1DIR
+   \   00004E                REQUIRE P1SEL
+   \   00004E                REQUIRE P2DIR
+   \   00004E                REQUIRE P2SEL
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     33          uint8 GetIOLevel(uint8 group, uint8 bit)
+   \                     GetIOLevel:
+     34          {
+   \   000000   C0..         PUSH    ?V0 + 0
+   \   000002   C0..         PUSH    ?V0 + 1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004   E9           MOV     A,R1
+     35              switch(group)
+   \   000005   6008         JZ      ??GetIOLevel_0
+   \   000007   14           DEC     A
+   \   000008   601B         JZ      ??GetIOLevel_1
+   \   00000A   14           DEC     A
+   \   00000B   602C         JZ      ??GetIOLevel_2
+   \   00000D   803C         SJMP    ??GetIOLevel_3
+     36              {
+     37              case 0: return !!(P0 & (1 << bit));
+   \                     ??GetIOLevel_0:
+   \   00000F   75..01       MOV     ?V0 + 0,#0x1
+   \   000012   75..00       MOV     ?V0 + 1,#0x0
+   \   000015   EA           MOV     A,R2
+   \   000016   78..         MOV     R0,#?V0 + 0
+   \   000018   12....       LCALL   ?S_SHL
+   \   00001B   E5..         MOV     A,?V0 + 0
+   \   00001D   5580         ANL     A,0x80
+   \   00001F   602A         JZ      ??GetIOLevel_3
+   \                     ??GetIOLevel_4:
+   \   000021   7901         MOV     R1,#0x1
+   \   000023   8028         SJMP    ??GetIOLevel_5
+     38              case 1: return !!(P1 & (1 << bit));
+   \                     ??GetIOLevel_1:
+   \   000025   75..01       MOV     ?V0 + 0,#0x1
+   \   000028   75..00       MOV     ?V0 + 1,#0x0
+   \   00002B   EA           MOV     A,R2
+   \   00002C   78..         MOV     R0,#?V0 + 0
+   \   00002E   12....       LCALL   ?S_SHL
+   \   000031   E5..         MOV     A,?V0 + 0
+   \   000033   5590         ANL     A,0x90
+   \   000035   6014         JZ      ??GetIOLevel_3
+   \   000037   80E8         SJMP    ??GetIOLevel_4
+     39              case 2: return !!(P2 & (1 << bit));
+   \                     ??GetIOLevel_2:
+   \   000039   75..01       MOV     ?V0 + 0,#0x1
+   \   00003C   75..00       MOV     ?V0 + 1,#0x0
+   \   00003F   EA           MOV     A,R2
+   \   000040   78..         MOV     R0,#?V0 + 0
+   \   000042   12....       LCALL   ?S_SHL
+   \   000045   E5..         MOV     A,?V0 + 0
+   \   000047   55A0         ANL     A,0xa0
+   \   000049   70D6         JNZ     ??GetIOLevel_4
+     40              }
+     41              return 0;
+   \                     ??GetIOLevel_3:
+   \   00004B   7900         MOV     R1,#0x0
+   \                     ??GetIOLevel_5:
+   \   00004D                REQUIRE ?Subroutine0
+   \   00004D                REQUIRE _A_P0
+   \   00004D                REQUIRE _A_P1
+   \   00004D                REQUIRE _A_P2
+   \   00004D                ; // Fall through to label ?Subroutine0
+     42          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     43          void SetIOLevel(uint8 group, uint8 bit, uint8 value)
+   \                     SetIOLevel:
+     44          {
+   \   000000   C0..         PUSH    ?V0 + 0
+   \   000002   C0..         PUSH    ?V0 + 1
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     45              switch(group)
+   \   000004   E9           MOV     A,R1
+   \   000005   6008         JZ      ??SetIOLevel_0
+   \   000007   14           DEC     A
+   \   000008   6027         JZ      ??SetIOLevel_1
+   \   00000A   14           DEC     A
+   \   00000B   6046         JZ      ??SetIOLevel_2
+   \   00000D   8064         SJMP    ??SetIOLevel_3
+     46              {
+     47              case 0:
+     48                  if(value)
+   \                     ??SetIOLevel_0:
+   \   00000F   EB           MOV     A,R3
+   \   000010   75..01       MOV     ?V0 + 0,#0x1
+   \   000013   75..00       MOV     ?V0 + 1,#0x0
+   \   000016   600C         JZ      ??SetIOLevel_4
+     49                    P0 |= (1 << bit);
+   \   000018   EA           MOV     A,R2
+   \   000019   78..         MOV     R0,#?V0 + 0
+   \   00001B   12....       LCALL   ?S_SHL
+   \   00001E   E5..         MOV     A,?V0 + 0
+   \   000020   4280         ORL     0x80,A
+   \   000022   804F         SJMP    ??SetIOLevel_3
+     50                  else
+     51                    P0 &=~(1 << bit);
+   \                     ??SetIOLevel_4:
+   \   000024   EA           MOV     A,R2
+   \   000025   78..         MOV     R0,#?V0 + 0
+   \   000027   12....       LCALL   ?S_SHL
+   \   00002A   E5..         MOV     A,?V0 + 0
+   \   00002C   F4           CPL     A
+   \   00002D   5280         ANL     0x80,A
+   \   00002F   8042         SJMP    ??SetIOLevel_3
+     52                  break;
+     53              case 1:
+     54                  if(value)
+   \                     ??SetIOLevel_1:
+   \   000031   EB           MOV     A,R3
+   \   000032   75..01       MOV     ?V0 + 0,#0x1
+   \   000035   75..00       MOV     ?V0 + 1,#0x0
+   \   000038   600C         JZ      ??SetIOLevel_5
+     55                    P1 |= (1 << bit);
+   \   00003A   EA           MOV     A,R2
+   \   00003B   78..         MOV     R0,#?V0 + 0
+   \   00003D   12....       LCALL   ?S_SHL
+   \   000040   E5..         MOV     A,?V0 + 0
+   \   000042   4290         ORL     0x90,A
+   \   000044   802D         SJMP    ??SetIOLevel_3
+     56                  else
+     57                    P1 &=~(1 << bit);
+   \                     ??SetIOLevel_5:
+   \   000046   EA           MOV     A,R2
+   \   000047   78..         MOV     R0,#?V0 + 0
+   \   000049   12....       LCALL   ?S_SHL
+   \   00004C   E5..         MOV     A,?V0 + 0
+   \   00004E   F4           CPL     A
+   \   00004F   5290         ANL     0x90,A
+   \   000051   8020         SJMP    ??SetIOLevel_3
+     58                  break;
+     59              case 2:
+     60                  if(value)
+   \                     ??SetIOLevel_2:
+   \   000053   EB           MOV     A,R3
+   \   000054   75..01       MOV     ?V0 + 0,#0x1
+   \   000057   75..00       MOV     ?V0 + 1,#0x0
+   \   00005A   600C         JZ      ??SetIOLevel_6
+     61                    P2 |= (1 << bit);
+   \   00005C   EA           MOV     A,R2
+   \   00005D   78..         MOV     R0,#?V0 + 0
+   \   00005F   12....       LCALL   ?S_SHL
+   \   000062   E5..         MOV     A,?V0 + 0
+   \   000064   42A0         ORL     0xa0,A
+   \   000066   800B         SJMP    ??SetIOLevel_3
+     62                  else
+     63                    P2 &=~(1 << bit);
+   \                     ??SetIOLevel_6:
+   \   000068   EA           MOV     A,R2
+   \   000069   78..         MOV     R0,#?V0 + 0
+   \   00006B   12....       LCALL   ?S_SHL
+   \   00006E   E5..         MOV     A,?V0 + 0
+   \   000070   F4           CPL     A
+   \   000071   52A0         ANL     0xa0,A
+     64                  break;
+     65              }
+     66          }
+   \                     ??SetIOLevel_3:
+   \   000073   80..         SJMP    ?Subroutine0
+   \   000075                REQUIRE _A_P0
+   \   000075                REQUIRE _A_P1
+   \   000075                REQUIRE _A_P2
+     67          /****************************************************************
+     68          *函数功能 ：初始化串口1										
+     69          *入口参数 ：无												
+     70          *返 回 值 ：无							
+     71          *说    明 ：57600-8-n-1						
+     72          ****************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     73          void initUART_1(void)
+   \                     initUART_1:
+     74          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     75              CLKCONCMD &= ~0x40;              //晶振
+   \   000000   53C6BF       ANL     0xc6,#0xbf
+     76              while(!(SLEEPSTA & 0x40));      //等待晶振稳定
+   \                     ??initUART_1_0:
+   \   000003   E59D         MOV     A,0x9d
+   \   000005   A2E6         MOV     C,0xE0 /* A   */.6
+   \   000007   50FA         JNC     ??initUART_1_0
+     77              CLKCONCMD &= ~0x47;             //TICHSPD128分频，CLKSPD不分频
+   \   000009   53C6B8       ANL     0xc6,#0xb8
+     78              SLEEPCMD |= 0x04; 		 //关闭不用的RC振荡器
+   \   00000C   43BE04       ORL     0xbe,#0x4
+     79              PERCFG |= 0x02;				//位置1 P0口
+   \   00000F   43F102       ORL     0xf1,#0x2
+     80              P1SEL |= 0xF0;				//P0用作串口
+   \   000012   43F4F0       ORL     0xf4,#0xf0
+     81              P2DIR |= 0X80;                             //P0优先作为串口1
+   \   000015   43FF80       ORL     0xff,#0x80
+     82              U1CSR |= 0x80;				//UART方式
+   \   000018   D2FF         SETB    0xf8.7
+     83              //*********************************************************
+     84              //	CC2530 UART1  BAUD设置
+     85              //*********************************************************
+     86              //设置博特率为 9600
+     87              U1GCR |= 8;				//baud_e
+   \   00001A   43FC08       ORL     0xfc,#0x8
+     88              U1BAUD |= 59;				//波特率设为 9600
+   \   00001D   43FA3B       ORL     0xfa,#0x3b
+     89              //设置博特率为 38400
+     90              //U1GCR |= 10;				//baud_e
+     91              //U1BAUD |= 59;				//波特率设为 38400
+     92              //设置博特率为 115200
+     93              //U1GCR |= 11;				//baud_e
+     94              //U1BAUD |= 216;				//波特率设为 115200
+     95              UTX1IF = 0;
+   \   000020   C2EA         CLR     0xe8.2
+     96              U1CSR |= 0X40;				//允许接收
+   \   000022   D2FE         SETB    0xf8.6
+     97              IEN0 |= 0x88;				//开总中断，接收中断
+   \   000024   43A888       ORL     0xa8,#0x88
+     98          }
+   \   000027   02....       LJMP    ?BRET
+   \   00002A                REQUIRE CLKCONCMD
+   \   00002A                REQUIRE SLEEPSTA
+   \   00002A                REQUIRE SLEEPCMD
+   \   00002A                REQUIRE PERCFG
+   \   00002A                REQUIRE P1SEL
+   \   00002A                REQUIRE P2DIR
+   \   00002A                REQUIRE _A_U1CSR
+   \   00002A                REQUIRE U1GCR
+   \   00002A                REQUIRE U1BAUD
+   \   00002A                REQUIRE _A_IRCON2
+   \   00002A                REQUIRE _A_IEN0
+     99          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    100          void Uart1TxByte(unsigned char v)
+   \                     Uart1TxByte:
+    101          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    102              U1DBUF = v;
+   \   000000   89F9         MOV     0xf9,R1
+    103              while(UTX1IF == 0);
+   \                     ??Uart1TxByte_0:
+   \   000002   A2EA         MOV     C,0xe8.2
+   \   000004   50FC         JNC     ??Uart1TxByte_0
+    104              UTX1IF = 0;
+   \   000006   C2EA         CLR     0xe8.2
+    105          }
+   \   000008   02....       LJMP    ?BRET
+   \   00000B                REQUIRE U1DBUF
+   \   00000B                REQUIRE _A_IRCON2
+    106          
+    107          /****************************************************************
+    108          *函数功能 ：串口发送字符串函数					
+    109          *入口参数 : data:数据									
+    110          *			len :数据长度							
+    111          *返 回 值 ：无											
+    112          *说    明 ：				
+    113          ****************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    114          void Uart1TX(unsigned char *Data,unsigned int len)
+   \                     Uart1TX:
+    115          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    116            unsigned int j;
+    117            for(j=0;j<len;j++)
+   \   000005   7800         MOV     R0,#0x0
+   \   000007   7900         MOV     R1,#0x0
+   \   000009   801A         SJMP    ??Uart1TX_0
+    118            {
+    119              U1DBUF = *Data++;
+   \                     ??Uart1TX_1:
+   \   00000B   8A82         MOV     DPL,R2
+   \   00000D   8B83         MOV     DPH,R3
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   F5F9         MOV     0xf9,A
+   \   000012   A3           INC     DPTR
+   \   000013   AA82         MOV     R2,DPL
+   \   000015   AB83         MOV     R3,DPH
+    120              while(UTX1IF == 0);
+   \                     ??Uart1TX_2:
+   \   000017   A2EA         MOV     C,0xe8.2
+   \   000019   50FC         JNC     ??Uart1TX_2
+    121              UTX1IF = 0;
+   \   00001B   C2EA         CLR     0xe8.2
+    122            }
+   \   00001D   E8           MOV     A,R0
+   \   00001E   2401         ADD     A,#0x1
+   \   000020   08           INC     R0
+   \   000021   E9           MOV     A,R1
+   \   000022   3400         ADDC    A,#0x0
+   \   000024   F9           MOV     R1,A
+   \                     ??Uart1TX_0:
+   \   000025   C3           CLR     C
+   \   000026   E8           MOV     A,R0
+   \   000027   9C           SUBB    A,R4
+   \   000028   E9           MOV     A,R1
+   \   000029   9D           SUBB    A,R5
+   \   00002A   40DF         JC      ??Uart1TX_1
+    123          }
+   \   00002C   7F01         MOV     R7,#0x1
+   \   00002E   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   000031                REQUIRE U1DBUF
+   \   000031                REQUIRE _A_IRCON2
+    124          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    125          char Uart1RX(void)
+   \                     Uart1RX:
+    126          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    127             char c;
+    128             unsigned char status;
+    129             status = U1CSR;
+   \   000000   E5F8         MOV     A,0xf8
+   \   000002   F8           MOV     R0,A
+    130             U1CSR |= 0x40;
+   \   000003   D2FE         SETB    0xf8.6
+    131             while (!URX1IF);
+   \                     ??Uart1RX_0:
+   \   000005   A28F         MOV     C,0x88.7
+   \   000007   50FC         JNC     ??Uart1RX_0
+    132             c = U1DBUF;
+   \   000009   E5F9         MOV     A,0xf9
+   \   00000B   F9           MOV     R1,A
+    133             URX1IF = 0;
+   \   00000C   C28F         CLR     0x88.7
+    134             U1CSR = status;
+   \   00000E   88F8         MOV     0xf8,R0
+    135             return c;
+   \   000010   02....       LJMP    ?BRET
+   \   000013                REQUIRE _A_U1CSR
+   \   000013                REQUIRE _A_TCON
+   \   000013                REQUIRE U1DBUF
+    136          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??GetADValue?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    GetADValue
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SetIOInput?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SetIOInput
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SetIOOutput?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SetIOOutput
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??GetIOLevel?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    GetIOLevel
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SetIOLevel?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SetIOLevel
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??initUART_1?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    initUART_1
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Uart1TxByte?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Uart1TxByte
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Uart1TX?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Uart1TX
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Uart1RX?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Uart1RX
+
+   Maximum stack usage in bytes:
+
+     Function    ISTACK PSTACK XSTACK
+     --------    ------ ------ ------
+     GetADValue      0      0      0
+     GetIOLevel      2      0      0
+     SetIOInput      2      0      0
+     SetIOLevel      2      0      0
+     SetIOOutput     2      0      0
+     Uart1RX         0      0      0
+     Uart1TX         0      0      9
+     Uart1TxByte     0      0      0
+     initUART_1      0      0      0
+
+
+   Segment part sizes:
+
+     Function/Label      Bytes
+     --------------      -----
+     _A_P0                  1
+     _A_TCON                1
+     _A_P1                  1
+     SLEEPSTA               1
+     _A_P2                  1
+     _A_IEN0                1
+     ADCCON1                1
+     ADCCON2                1
+     ADCL                   1
+     ADCH                   1
+     SLEEPCMD               1
+     CLKCONCMD              1
+     _A_IRCON2              1
+     PERCFG                 1
+     ADCCFG                 1
+     P0SEL                  1
+     P1SEL                  1
+     P2SEL                  1
+     _A_U1CSR               1
+     U1DBUF                 1
+     U1BAUD                 1
+     U1GCR                  1
+     P0DIR                  1
+     P1DIR                  1
+     P2DIR                  1
+     GetADValue            25
+     SetIOInput            79
+     ?Subroutine0           7
+     SetIOOutput           78
+     GetIOLevel            77
+     SetIOLevel           117
+     initUART_1            42
+     Uart1TxByte           11
+     Uart1TX               49
+     Uart1RX               19
+     ??GetADValue?relay     6
+     ??SetIOInput?relay     6
+     ??SetIOOutput?relay    6
+     ??GetIOLevel?relay     6
+     ??SetIOLevel?relay     6
+     ??initUART_1?relay     6
+     ??Uart1TxByte?relay    6
+     ??Uart1TX?relay        6
+     ??Uart1RX?relay        6
+
+ 
+ 504 bytes in segment BANKED_CODE
+  54 bytes in segment BANK_RELAYS
+  25 bytes in segment SFR_AN
+ 
+ 558 bytes of CODE memory
+   0 bytes of DATA memory (+ 25 bytes shared)
+
+Errors: none
+Warnings: none

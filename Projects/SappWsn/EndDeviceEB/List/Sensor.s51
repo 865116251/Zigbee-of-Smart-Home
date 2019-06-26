@@ -1,0 +1,1106 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.10.3.10338/W32 for 8051        31/May/2019  14:51:35 /
+// Copyright 2004-2011 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//    Source file        =  F:\cc2530testing\ZStack-CC2530-IOT2\Components\ha /
+//                          l\target\CC2530EB\Sensor.c                        /
+//    Command line       =  -f F:\cc2530testing\ZStack-CC2530-IOT2\Projects\S /
+//                          appWsn\..\zstack\Tools\CC2530DB\f8wEndev.cfg      /
+//                          (-DCPU32MHZ -DROOT=__near_func                    /
+//                          -DMAC_CFG_TX_DATA_MAX=3 -DMAC_CFG_TX_MAX=6        /
+//                          -DMAC_CFG_RX_MAX=3) -f F:\cc2530testing\ZStack-CC /
+//                          2530-IOT2\Projects\SappWsn\..\zstack\Tools\CC2530 /
+//                          DB\f8wConfig.cfg (-DZIGBEEPRO -DSECURE=0          /
+//                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                 /
+//                          -DDEFAULT_CHANLIST=0x00020000                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0x0213                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DLINK_STATUS_JITTER_MASK=0x007F                  /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3   /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40          /
+//                          -DNWK_MAX_BINDING_ENTRIES=4                       /
+//                          -DMAX_BINDING_CLUSTER_IDS=4                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DMAC_MAX_FRAME_SIZE=116       /
+//                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const    /
+//                          __code" -DGENERIC=__generic                       /
+//                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000       /
+//                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)  /
+//                          -DREJOIN_POLL_RATE=440 F:\cc2530testing\ZStack-CC /
+//                          2530-IOT2\Components\hal\target\CC2530EB\Sensor.c /
+//                           -D NWK_AUTO_POLL -D ZTOOL_P1 -D xxZAPP_P2 -D     /
+//                          MT_TASK -D xMT_SYS_FUNC -D MT_ZDO_FUNC -lC        /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\EndDeviceEB\List\ -lA                         /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\EndDeviceEB\List\ --diag_suppress             /
+//                          Pe001,Pa010 -o F:\cc2530testing\ZStack-CC2530-IOT /
+//                          2\Projects\SappWsn\EndDeviceEB\Obj\ -e            /
+//                          --no_code_motion --debug --core=plain             /
+//                          --dptr=16,1 --data_model=large                    /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 16 -I                           /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\ -I F:\cc2530testing\ZStack-CC2530-IOT2\Proje /
+//                          cts\SappWsn\Source\ -I F:\cc2530testing\ZStack-CC /
+//                          2530-IOT2\Projects\SappWsn\..\zstack\ZMain\TI2530 /
+//                          DB\ -I F:\cc2530testing\ZStack-CC2530-IOT2\Projec /
+//                          ts\SappWsn\..\..\Components\hal\include\ -I       /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\hal\target\CC2530EB\ -I      /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\mac\include\ -I              /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\mac\high_level\ -I           /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\mac\low_level\srf04\ -I      /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\mac\low_level\srf04\single_c /
+//                          hip\ -I F:\cc2530testing\ZStack-CC2530-IOT2\Proje /
+//                          cts\SappWsn\..\..\Components\mt\ -I               /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\osal\include\ -I             /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\services\saddr\ -I           /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\services\sdata\ -I           /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\stack\af\ -I                 /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\stack\nwk\ -I                /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\stack\sapi\ -I               /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\stack\sec\ -I                /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\stack\sys\ -I                /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\stack\zdo\ -I                /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\zmac\ -I                     /
+//                          F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\..\..\Components\zmac\f8w\ -Ohz               /
+//                          --require_prototypes                              /
+//    List file          =  F:\cc2530testing\ZStack-CC2530-IOT2\Projects\Sapp /
+//                          Wsn\EndDeviceEB\List\Sensor.s51                   /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME Sensor
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?S_SHL
+        EXTERN ?V0
+
+        PUBLIC ??GetADValue?relay
+        FUNCTION ??GetADValue?relay,0203H
+        PUBLIC ??GetIOLevel?relay
+        FUNCTION ??GetIOLevel?relay,0203H
+        PUBLIC ??SetIOInput?relay
+        FUNCTION ??SetIOInput?relay,0203H
+        PUBLIC ??SetIOLevel?relay
+        FUNCTION ??SetIOLevel?relay,0203H
+        PUBLIC ??SetIOOutput?relay
+        FUNCTION ??SetIOOutput?relay,0203H
+        PUBLIC ??Uart1RX?relay
+        FUNCTION ??Uart1RX?relay,0203H
+        PUBLIC ??Uart1TX?relay
+        FUNCTION ??Uart1TX?relay,0203H
+        PUBLIC ??Uart1TxByte?relay
+        FUNCTION ??Uart1TxByte?relay,0203H
+        PUBLIC ??initUART_1?relay
+        FUNCTION ??initUART_1?relay,0203H
+        PUBWEAK ADCCFG
+        PUBWEAK ADCCON1
+        PUBWEAK ADCCON2
+        PUBWEAK ADCH
+        PUBWEAK ADCL
+        PUBWEAK CLKCONCMD
+        PUBLIC GetADValue
+        FUNCTION GetADValue,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC GetIOLevel
+        FUNCTION GetIOLevel,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBWEAK P0DIR
+        PUBWEAK P0SEL
+        PUBWEAK P1DIR
+        PUBWEAK P1SEL
+        PUBWEAK P2DIR
+        PUBWEAK P2SEL
+        PUBWEAK PERCFG
+        PUBWEAK SLEEPCMD
+        PUBWEAK SLEEPSTA
+        PUBLIC SetIOInput
+        FUNCTION SetIOInput,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC SetIOLevel
+        FUNCTION SetIOLevel,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC SetIOOutput
+        FUNCTION SetIOOutput,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBWEAK U1BAUD
+        PUBWEAK U1DBUF
+        PUBWEAK U1GCR
+        PUBLIC Uart1RX
+        FUNCTION Uart1RX,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC Uart1TX
+        FUNCTION Uart1TX,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC Uart1TxByte
+        FUNCTION Uart1TxByte,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBWEAK _A_IEN0
+        PUBWEAK _A_IRCON2
+        PUBWEAK _A_P0
+        PUBWEAK _A_P1
+        PUBWEAK _A_P2
+        PUBWEAK _A_TCON
+        PUBWEAK _A_U1CSR
+        PUBLIC initUART_1
+        FUNCTION initUART_1,0203H
+        ARGFRAME XSTACK, 0, STACK
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP IDATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+        CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI V8 SameValue
+        CFI V9 SameValue
+        CFI V10 SameValue
+        CFI V11 SameValue
+        CFI V12 SameValue
+        CFI V13 SameValue
+        CFI V14 SameValue
+        CFI V15 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+GetADValue          SYMBOL "GetADValue"
+??GetADValue?relay  SYMBOL "?relay", GetADValue
+GetIOLevel          SYMBOL "GetIOLevel"
+??GetIOLevel?relay  SYMBOL "?relay", GetIOLevel
+SetIOInput          SYMBOL "SetIOInput"
+??SetIOInput?relay  SYMBOL "?relay", SetIOInput
+SetIOLevel          SYMBOL "SetIOLevel"
+??SetIOLevel?relay  SYMBOL "?relay", SetIOLevel
+SetIOOutput         SYMBOL "SetIOOutput"
+??SetIOOutput?relay SYMBOL "?relay", SetIOOutput
+Uart1RX             SYMBOL "Uart1RX"
+??Uart1RX?relay     SYMBOL "?relay", Uart1RX
+Uart1TX             SYMBOL "Uart1TX"
+??Uart1TX?relay     SYMBOL "?relay", Uart1TX
+Uart1TxByte         SYMBOL "Uart1TxByte"
+??Uart1TxByte?relay SYMBOL "?relay", Uart1TxByte
+initUART_1          SYMBOL "initUART_1"
+??initUART_1?relay  SYMBOL "?relay", initUART_1
+
+// F:\cc2530testing\ZStack-CC2530-IOT2\Components\hal\target\CC2530EB\Sensor.c
+//    1 #include "Sensor.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,080H
+// union <unnamed> volatile __sfr _A_P0
+_A_P0:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,088H
+// union <unnamed> volatile __sfr _A_TCON
+_A_TCON:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,090H
+// union <unnamed> volatile __sfr _A_P1
+_A_P1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,09dH
+// unsigned char volatile __sfr SLEEPSTA
+SLEEPSTA:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0a0H
+// union <unnamed> volatile __sfr _A_P2
+_A_P2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0a8H
+// union <unnamed> volatile __sfr _A_IEN0
+_A_IEN0:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0b4H
+// unsigned char volatile __sfr ADCCON1
+ADCCON1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0b5H
+// unsigned char volatile __sfr ADCCON2
+ADCCON2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0baH
+// unsigned char volatile __sfr ADCL
+ADCL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0bbH
+// unsigned char volatile __sfr ADCH
+ADCH:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0beH
+// unsigned char volatile __sfr SLEEPCMD
+SLEEPCMD:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c6H
+// unsigned char volatile __sfr CLKCONCMD
+CLKCONCMD:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0e8H
+// union <unnamed> volatile __sfr _A_IRCON2
+_A_IRCON2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f1H
+// unsigned char volatile __sfr PERCFG
+PERCFG:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f2H
+// unsigned char volatile __sfr ADCCFG
+ADCCFG:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f3H
+// unsigned char volatile __sfr P0SEL
+P0SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f4H
+// unsigned char volatile __sfr P1SEL
+P1SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f5H
+// unsigned char volatile __sfr P2SEL
+P2SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f8H
+// union <unnamed> volatile __sfr _A_U1CSR
+_A_U1CSR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f9H
+// unsigned char volatile __sfr U1DBUF
+U1DBUF:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0faH
+// unsigned char volatile __sfr U1BAUD
+U1BAUD:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0fcH
+// unsigned char volatile __sfr U1GCR
+U1GCR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0fdH
+// unsigned char volatile __sfr P0DIR
+P0DIR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0feH
+// unsigned char volatile __sfr P1DIR
+P1DIR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0ffH
+// unsigned char volatile __sfr P2DIR
+P2DIR:
+        DATA8
+        DS 1
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//    2 uint8 GetADValue(void)
+GetADValue:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function GetADValue
+        CODE
+//    3 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//    4     uint8 v = 0;
+//    5     ADCCFG = 0x01;
+        MOV     0xf2,#0x1
+//    6     ADCCON1 = 0x33;
+        MOV     0xb4,#0x33
+//    7     ADCCON2 = 0xB0;
+        MOV     0xb5,#-0x50
+//    8     ADCCON1 |= 0x40;
+        ORL     0xb4,#0x40
+//    9     while(!(ADCCON1 & 0x80));
+??GetADValue_0:
+        MOV     A,0xb4
+        MOV     C,0xE0 /* A   */.7
+        JNC     ??GetADValue_0
+//   10     v = ADCL;
+        MOV     A,0xba
+//   11     v = ADCH;
+//   12     return(v);
+        MOV     R1,0xbb
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock0
+        REQUIRE ADCCFG
+        REQUIRE ADCCON1
+        REQUIRE ADCCON2
+        REQUIRE ADCL
+        REQUIRE ADCH
+//   13 }
+//   14 // pull: 0 - disable, 1 - pulldown, 2 - pullup
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   15 void SetIOInput(uint8 group, uint8 bit, uint8 pull)
+SetIOInput:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI Function SetIOInput
+        CODE
+//   16 {
+        PUSH    ?V0 + 0
+        CFI V0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    ?V0 + 1
+        CFI V1 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   17    switch(group)
+        MOV     A,R1
+        JZ      ??SetIOInput_0
+        DEC     A
+        JZ      ??SetIOInput_1
+        DEC     A
+        JZ      ??SetIOInput_2
+        SJMP    ??SetIOInput_3
+//   18    {
+//   19    case 0: P0DIR &= ~(1 << bit); P0SEL &= ~(1 << bit); break;
+??SetIOInput_0:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        CPL     A
+        ANL     0xfd,A
+        ANL     0xf3,A
+        SJMP    ??SetIOInput_3
+//   20    case 1: P1DIR &= ~(1 << bit); P1SEL &= ~(1 << bit); break;
+??SetIOInput_1:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        CPL     A
+        ANL     0xfe,A
+        ANL     0xf4,A
+        SJMP    ??SetIOInput_3
+//   21    case 2: P2DIR &= ~(1 << bit); P2SEL &= ~(1 << bit); break;
+??SetIOInput_2:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        CPL     A
+        ANL     0xff,A
+        ANL     0xf5,A
+//   22    }
+//   23 }
+??SetIOInput_3:
+        LJMP    ?Subroutine0 & 0xFFFF
+        CFI EndBlock cfiBlock1
+        REQUIRE P0DIR
+        REQUIRE P0SEL
+        REQUIRE P1DIR
+        REQUIRE P1SEL
+        REQUIRE P2DIR
+        REQUIRE P2SEL
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   24 void SetIOOutput(uint8 group, uint8 bit)
+SetIOOutput:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function SetIOOutput
+        CODE
+//   25 {
+        PUSH    ?V0 + 0
+        CFI V0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    ?V0 + 1
+        CFI V1 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   26    switch(group)
+        MOV     A,R1
+        JZ      ??SetIOOutput_0
+        DEC     A
+        JZ      ??SetIOOutput_1
+        DEC     A
+        JZ      ??SetIOOutput_2
+        SJMP    ??SetIOOutput_3
+//   27    {
+//   28    case 0: P0DIR |= (1 << bit); P0SEL &= ~(1 << bit); break;
+??SetIOOutput_0:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ORL     0xfd,A
+        CPL     A
+        ANL     0xf3,A
+        SJMP    ??SetIOOutput_3
+//   29    case 1: P1DIR |= (1 << bit); P1SEL &= ~(1 << bit); break;
+??SetIOOutput_1:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ORL     0xfe,A
+        CPL     A
+        ANL     0xf4,A
+        SJMP    ??SetIOOutput_3
+//   30    case 2: P2DIR |= (1 << bit); P2SEL &= ~(1 << bit); break;
+??SetIOOutput_2:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ORL     0xff,A
+        CPL     A
+        ANL     0xf5,A
+//   31    }
+//   32 }
+??SetIOOutput_3:
+        SJMP    ?Subroutine0
+        CFI EndBlock cfiBlock2
+        REQUIRE P0DIR
+        REQUIRE P0SEL
+        REQUIRE P1DIR
+        REQUIRE P1SEL
+        REQUIRE P2DIR
+        REQUIRE P2SEL
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   33 uint8 GetIOLevel(uint8 group, uint8 bit)
+GetIOLevel:
+        CFI Block cfiBlock3 Using cfiCommon0
+        CFI Function GetIOLevel
+        CODE
+//   34 {
+        PUSH    ?V0 + 0
+        CFI V0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    ?V0 + 1
+        CFI V1 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+        MOV     A,R1
+//   35     switch(group)
+        JZ      ??GetIOLevel_0
+        DEC     A
+        JZ      ??GetIOLevel_1
+        DEC     A
+        JZ      ??GetIOLevel_2
+        SJMP    ??GetIOLevel_3
+//   36     {
+//   37     case 0: return !!(P0 & (1 << bit));
+??GetIOLevel_0:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ANL     A,0x80
+        JZ      ??GetIOLevel_3
+??GetIOLevel_4:
+        MOV     R1,#0x1
+        SJMP    ??GetIOLevel_5
+//   38     case 1: return !!(P1 & (1 << bit));
+??GetIOLevel_1:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ANL     A,0x90
+        JZ      ??GetIOLevel_3
+        SJMP    ??GetIOLevel_4
+//   39     case 2: return !!(P2 & (1 << bit));
+??GetIOLevel_2:
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ANL     A,0xa0
+        JNZ     ??GetIOLevel_4
+//   40     }
+//   41     return 0;
+??GetIOLevel_3:
+        MOV     R1,#0x0
+        CFI EndBlock cfiBlock3
+??GetIOLevel_5:
+        REQUIRE ?Subroutine0
+        REQUIRE _A_P0
+        REQUIRE _A_P1
+        REQUIRE _A_P2
+        ; // Fall through to label ?Subroutine0
+//   42 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+        CFI Block cfiBlock4 Using cfiCommon0
+        CFI NoFunction
+        CFI CFA_SP SP+-5
+        CFI V0 Frame(CFA_SP, 4)
+        CFI V1 Frame(CFA_SP, 5)
+        POP     ?V0 + 1
+        CFI CFA_SP SP+-4
+        CFI V1 SameValue
+        POP     ?V0 + 0
+        CFI CFA_SP SP+-3
+        CFI V0 SameValue
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock4
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   43 void SetIOLevel(uint8 group, uint8 bit, uint8 value)
+SetIOLevel:
+        CFI Block cfiBlock5 Using cfiCommon0
+        CFI Function SetIOLevel
+        CODE
+//   44 {
+        PUSH    ?V0 + 0
+        CFI V0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    ?V0 + 1
+        CFI V1 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   45     switch(group)
+        MOV     A,R1
+        JZ      ??SetIOLevel_0
+        DEC     A
+        JZ      ??SetIOLevel_1
+        DEC     A
+        JZ      ??SetIOLevel_2
+        SJMP    ??SetIOLevel_3
+//   46     {
+//   47     case 0:
+//   48         if(value)
+??SetIOLevel_0:
+        MOV     A,R3
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        JZ      ??SetIOLevel_4
+//   49           P0 |= (1 << bit);
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ORL     0x80,A
+        SJMP    ??SetIOLevel_3
+//   50         else
+//   51           P0 &=~(1 << bit);
+??SetIOLevel_4:
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        CPL     A
+        ANL     0x80,A
+        SJMP    ??SetIOLevel_3
+//   52         break;
+//   53     case 1:
+//   54         if(value)
+??SetIOLevel_1:
+        MOV     A,R3
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        JZ      ??SetIOLevel_5
+//   55           P1 |= (1 << bit);
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ORL     0x90,A
+        SJMP    ??SetIOLevel_3
+//   56         else
+//   57           P1 &=~(1 << bit);
+??SetIOLevel_5:
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        CPL     A
+        ANL     0x90,A
+        SJMP    ??SetIOLevel_3
+//   58         break;
+//   59     case 2:
+//   60         if(value)
+??SetIOLevel_2:
+        MOV     A,R3
+        MOV     ?V0 + 0,#0x1
+        MOV     ?V0 + 1,#0x0
+        JZ      ??SetIOLevel_6
+//   61           P2 |= (1 << bit);
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        ORL     0xa0,A
+        SJMP    ??SetIOLevel_3
+//   62         else
+//   63           P2 &=~(1 << bit);
+??SetIOLevel_6:
+        MOV     A,R2
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,?V0 + 0
+        CPL     A
+        ANL     0xa0,A
+//   64         break;
+//   65     }
+//   66 }
+??SetIOLevel_3:
+        SJMP    ?Subroutine0
+        CFI EndBlock cfiBlock5
+        REQUIRE _A_P0
+        REQUIRE _A_P1
+        REQUIRE _A_P2
+//   67 /****************************************************************
+//   68 *函数功能 ：初始化串口1										
+//   69 *入口参数 ：无												
+//   70 *返 回 值 ：无							
+//   71 *说    明 ：57600-8-n-1						
+//   72 ****************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   73 void initUART_1(void)
+initUART_1:
+        CFI Block cfiBlock6 Using cfiCommon0
+        CFI Function initUART_1
+        CODE
+//   74 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   75     CLKCONCMD &= ~0x40;              //晶振
+        ANL     0xc6,#0xbf
+//   76     while(!(SLEEPSTA & 0x40));      //等待晶振稳定
+??initUART_1_0:
+        MOV     A,0x9d
+        MOV     C,0xE0 /* A   */.6
+        JNC     ??initUART_1_0
+//   77     CLKCONCMD &= ~0x47;             //TICHSPD128分频，CLKSPD不分频
+        ANL     0xc6,#0xb8
+//   78     SLEEPCMD |= 0x04; 		 //关闭不用的RC振荡器
+        ORL     0xbe,#0x4
+//   79     PERCFG |= 0x02;				//位置1 P0口
+        ORL     0xf1,#0x2
+//   80     P1SEL |= 0xF0;				//P0用作串口
+        ORL     0xf4,#0xf0
+//   81     P2DIR |= 0X80;                             //P0优先作为串口1
+        ORL     0xff,#0x80
+//   82     U1CSR |= 0x80;				//UART方式
+        SETB    0xf8.7
+//   83     //*********************************************************
+//   84     //	CC2530 UART1  BAUD设置
+//   85     //*********************************************************
+//   86     //设置博特率为 9600
+//   87     U1GCR |= 8;				//baud_e
+        ORL     0xfc,#0x8
+//   88     U1BAUD |= 59;				//波特率设为 9600
+        ORL     0xfa,#0x3b
+//   89     //设置博特率为 38400
+//   90     //U1GCR |= 10;				//baud_e
+//   91     //U1BAUD |= 59;				//波特率设为 38400
+//   92     //设置博特率为 115200
+//   93     //U1GCR |= 11;				//baud_e
+//   94     //U1BAUD |= 216;				//波特率设为 115200
+//   95     UTX1IF = 0;
+        CLR     0xe8.2
+//   96     U1CSR |= 0X40;				//允许接收
+        SETB    0xf8.6
+//   97     IEN0 |= 0x88;				//开总中断，接收中断
+        ORL     0xa8,#0x88
+//   98 }
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock6
+        REQUIRE CLKCONCMD
+        REQUIRE SLEEPSTA
+        REQUIRE SLEEPCMD
+        REQUIRE PERCFG
+        REQUIRE P1SEL
+        REQUIRE P2DIR
+        REQUIRE _A_U1CSR
+        REQUIRE U1GCR
+        REQUIRE U1BAUD
+        REQUIRE _A_IRCON2
+        REQUIRE _A_IEN0
+//   99 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  100 void Uart1TxByte(unsigned char v)
+Uart1TxByte:
+        CFI Block cfiBlock7 Using cfiCommon0
+        CFI Function Uart1TxByte
+        CODE
+//  101 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  102     U1DBUF = v;
+        MOV     0xf9,R1
+//  103     while(UTX1IF == 0);
+??Uart1TxByte_0:
+        MOV     C,0xe8.2
+        JNC     ??Uart1TxByte_0
+//  104     UTX1IF = 0;
+        CLR     0xe8.2
+//  105 }
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock7
+        REQUIRE U1DBUF
+        REQUIRE _A_IRCON2
+//  106 
+//  107 /****************************************************************
+//  108 *函数功能 ：串口发送字符串函数					
+//  109 *入口参数 : data:数据									
+//  110 *			len :数据长度							
+//  111 *返 回 值 ：无											
+//  112 *说    明 ：				
+//  113 ****************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  114 void Uart1TX(unsigned char *Data,unsigned int len)
+Uart1TX:
+        CFI Block cfiBlock8 Using cfiCommon0
+        CFI Function Uart1TX
+        CODE
+//  115 {
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  116   unsigned int j;
+//  117   for(j=0;j<len;j++)
+        MOV     R0,#0x0
+        MOV     R1,#0x0
+        SJMP    ??Uart1TX_0
+//  118   {
+//  119     U1DBUF = *Data++;
+??Uart1TX_1:
+        MOV     DPL,R2
+        MOV     DPH,R3
+        MOVX    A,@DPTR
+        MOV     0xf9,A
+        INC     DPTR
+        MOV     R2,DPL
+        MOV     R3,DPH
+//  120     while(UTX1IF == 0);
+??Uart1TX_2:
+        MOV     C,0xe8.2
+        JNC     ??Uart1TX_2
+//  121     UTX1IF = 0;
+        CLR     0xe8.2
+//  122   }
+        MOV     A,R0
+        ADD     A,#0x1
+        INC     R0
+        MOV     A,R1
+        ADDC    A,#0x0
+        MOV     R1,A
+??Uart1TX_0:
+        CLR     C
+        MOV     A,R0
+        SUBB    A,R4
+        MOV     A,R1
+        SUBB    A,R5
+        JC      ??Uart1TX_1
+//  123 }
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock8
+        REQUIRE U1DBUF
+        REQUIRE _A_IRCON2
+//  124 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  125 char Uart1RX(void)
+Uart1RX:
+        CFI Block cfiBlock9 Using cfiCommon0
+        CFI Function Uart1RX
+        CODE
+//  126 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  127    char c;
+//  128    unsigned char status;
+//  129    status = U1CSR;
+        MOV     A,0xf8
+        MOV     R0,A
+//  130    U1CSR |= 0x40;
+        SETB    0xf8.6
+//  131    while (!URX1IF);
+??Uart1RX_0:
+        MOV     C,0x88.7
+        JNC     ??Uart1RX_0
+//  132    c = U1DBUF;
+        MOV     A,0xf9
+        MOV     R1,A
+//  133    URX1IF = 0;
+        CLR     0x88.7
+//  134    U1CSR = status;
+        MOV     0xf8,R0
+//  135    return c;
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock9
+        REQUIRE _A_U1CSR
+        REQUIRE _A_TCON
+        REQUIRE U1DBUF
+//  136 }
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??GetADValue?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    GetADValue
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??SetIOInput?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    SetIOInput
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??SetIOOutput?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    SetIOOutput
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??GetIOLevel?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    GetIOLevel
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??SetIOLevel?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    SetIOLevel
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??initUART_1?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    initUART_1
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Uart1TxByte?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Uart1TxByte
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Uart1TX?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Uart1TX
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Uart1RX?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Uart1RX
+
+        END
+// 
+// 504 bytes in segment BANKED_CODE
+//  54 bytes in segment BANK_RELAYS
+//  25 bytes in segment SFR_AN
+// 
+// 558 bytes of CODE memory
+//   0 bytes of DATA memory (+ 25 bytes shared)
+//
+//Errors: none
+//Warnings: none

@@ -1,0 +1,1236 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.10.3.10338/W32 for 8051        04/Jun/2019  09:51:48 /
+// Copyright 2004-2011 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//    Source file        =  F:\cc2530testing\Zigbee终极无敌代码 -             /
+//                          副本\Projects\SappWsn\Source\SAPP_Device.c        /
+//    Command line       =  -f "F:\cc2530testing\Zigbee终极无敌代码 -         /
+//                          副本\Projects\SappWsn\..\zstack\Tools\CC2530DB\f8 /
+//                          wRouter.cfg" (-DCPU32MHZ -DROOT=__near_func       /
+//                          -DMAC_CFG_APP_PENDING_QUEUE=TRUE                  /
+//                          -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8        /
+//                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f                  /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\..\zstack\Tools\CC2530DB\f8 /
+//                          wConfig.cfg" (-DZIGBEEPRO -DSECURE=0              /
+//                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                 /
+//                          -DDEFAULT_CHANLIST=0x00020000                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0x0213                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DLINK_STATUS_JITTER_MASK=0x007F                  /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3   /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40          /
+//                          -DNWK_MAX_BINDING_ENTRIES=4                       /
+//                          -DMAX_BINDING_CLUSTER_IDS=4                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DMAC_MAX_FRAME_SIZE=116       /
+//                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const    /
+//                          __code" -DGENERIC=__generic                       /
+//                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000       /
+//                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)  /
+//                          -DREJOIN_POLL_RATE=440 "F:\cc2530testing\Zigbee终 /
+//                          极无敌代码 - 副本\Projects\SappWsn\Source\SAPP_De /
+//                          vice.c" -D ZTOOL_P1 -D MT_TASK -D MT_SYS_FUNC -D  /
+//                          MT_ZDO_FUNC -D LCD_SUPPORTED=DEBUG -D LIGHT -lC   /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\RouterLightControl\List\"   /
+//                          -lA "F:\cc2530testing\Zigbee终极无敌代码 -        /
+//                          副本\Projects\SappWsn\RouterLightControl\List\"   /
+//                          --diag_suppress Pe001,Pa010 -o                    /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\RouterLightControl\Obj\"    /
+//                          -e --no_code_motion --debug --core=plain          /
+//                          --dptr=16,1 --data_model=large                    /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 16 -I                           /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\" -I                        /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\Source\" -I                 /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\..\zstack\ZMain\TI2530DB\"  /
+//                          -I "F:\cc2530testing\Zigbee终极无敌代码 -         /
+//                          副本\Projects\SappWsn\..\..\Components\hal\includ /
+//                          e\" -I "F:\cc2530testing\Zigbee终极无敌代码 -     /
+//                          副本\Projects\SappWsn\..\..\Components\hal\target /
+//                          \CC2530EB\" -I "F:\cc2530testing\Zigbee终极无敌代 /
+//                          码 - 副本\Projects\SappWsn\..\..\Components\mac\i /
+//                          nclude\" -I "F:\cc2530testing\Zigbee终极无敌代码  /
+//                          - 副本\Projects\SappWsn\..\..\Components\mac\high /
+//                          _level\" -I "F:\cc2530testing\Zigbee终极无敌代码  /
+//                          - 副本\Projects\SappWsn\..\..\Components\mac\low_ /
+//                          level\srf04\" -I "F:\cc2530testing\Zigbee终极无敌 /
+//                          代码 - 副本\Projects\SappWsn\..\..\Components\mac /
+//                          \low_level\srf04\single_chip\" -I                 /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\..\..\Components\mt\" -I    /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\..\..\Components\osal\inclu /
+//                          de\" -I "F:\cc2530testing\Zigbee终极无敌代码 -    /
+//                          副本\Projects\SappWsn\..\..\Components\services\s /
+//                          addr\" -I "F:\cc2530testing\Zigbee终极无敌代码 -  /
+//                          副本\Projects\SappWsn\..\..\Components\services\s /
+//                          data\" -I "F:\cc2530testing\Zigbee终极无敌代码 -  /
+//                          副本\Projects\SappWsn\..\..\Components\stack\af\" /
+//                           -I "F:\cc2530testing\Zigbee终极无敌代码 -        /
+//                          副本\Projects\SappWsn\..\..\Components\stack\nwk\ /
+//                          " -I "F:\cc2530testing\Zigbee终极无敌代码 -       /
+//                          副本\Projects\SappWsn\..\..\Components\stack\sapi /
+//                          \" -I "F:\cc2530testing\Zigbee终极无敌代码 -      /
+//                          副本\Projects\SappWsn\..\..\Components\stack\sec\ /
+//                          " -I "F:\cc2530testing\Zigbee终极无敌代码 -       /
+//                          副本\Projects\SappWsn\..\..\Components\stack\sys\ /
+//                          " -I "F:\cc2530testing\Zigbee终极无敌代码 -       /
+//                          副本\Projects\SappWsn\..\..\Components\stack\zdo\ /
+//                          " -I "F:\cc2530testing\Zigbee终极无敌代码 -       /
+//                          副本\Projects\SappWsn\..\..\Components\zmac\" -I  /
+//                          "F:\cc2530testing\Zigbee终极无敌代码 -            /
+//                          副本\Projects\SappWsn\..\..\Components\zmac\f8w\" /
+//                           -Ohz --require_prototypes                        /
+//    List file          =  F:\cc2530testing\Zigbee终极无敌代码 -             /
+//                          副本\Projects\SappWsn\RouterLightControl\List\SAP /
+//                          P_Device.s51                                      /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME SAPP_Device
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBWEAK `??P1_ISR??INTVEC 123`
+        PUBLIC ??SendASignal?relay
+        FUNCTION ??SendASignal?relay,0203H
+        PUBWEAK P1IFG
+        PUBLIC P1_ISR
+        FUNCTION P1_ISR,0233H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 1, STACK
+        PUBLIC RfidStatus
+        PUBLIC SendASignal
+        FUNCTION SendASignal,080203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC WaterFlowCount
+        PUBWEAK _A_IRCON2
+        PUBWEAK _A_P1
+        PUBLIC fLibrate
+        PUBLIC funcCount
+        PUBLIC funcList
+        PUBLIC rxByte
+        PUBLIC rxBytePtr
+        PUBLIC seg7table
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP IDATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+        CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-2
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B SameValue
+        CFI A SameValue
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 SameValue
+        CFI R1 SameValue
+        CFI R2 SameValue
+        CFI R3 SameValue
+        CFI R4 SameValue
+        CFI R5 SameValue
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI V8 SameValue
+        CFI V9 SameValue
+        CFI V10 SameValue
+        CFI V11 SameValue
+        CFI V12 SameValue
+        CFI V13 SameValue
+        CFI V14 SameValue
+        CFI V15 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT SameValue
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+        
+        CFI Common cfiCommon1 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI V8 SameValue
+        CFI V9 SameValue
+        CFI V10 SameValue
+        CFI V11 SameValue
+        CFI V12 SameValue
+        CFI V13 SameValue
+        CFI V14 SameValue
+        CFI V15 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon1
+        
+`?<Name RouterIncomingRoutin 0>` SYMBOL "RouterIncomingRoutine"
+??RouterIncomingRoutine?relay SYMBOL "?relay", `?<Name RouterIncomingRoutin 0>`
+`?<Name RouterTimeoutRoutine 2>` SYMBOL "RouterTimeoutRoutine"
+??RouterTimeoutRoutine?relay SYMBOL "?relay", `?<Name RouterTimeoutRoutine 2>`
+P1_ISR              SYMBOL "P1_ISR"
+`??P1_ISR??INTVEC 123` SYMBOL "??INTVEC 123", P1_ISR
+SendASignal         SYMBOL "SendASignal"
+??SendASignal?relay SYMBOL "?relay", SendASignal
+
+        EXTERN ??RouterIncomingRoutine?relay
+        FUNCTION ??RouterIncomingRoutine?relay,00H
+        EXTERN ??RouterTimeoutRoutine?relay
+        FUNCTION ??RouterTimeoutRoutine?relay,00H
+
+// F:\cc2530testing\Zigbee终极无敌代码 - 副本\Projects\SappWsn\Source\SAPP_Device.c
+//    1 #include "SAPP_Device.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,08aH
+// unsigned char volatile __sfr P1IFG
+P1IFG:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,090H
+// union <unnamed> volatile __sfr _A_P1
+_A_P1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0e8H
+// union <unnamed> volatile __sfr _A_IRCON2
+_A_IRCON2:
+        DATA8
+        DS 1
+//    2 #include "Sensor.h"
+//    3 #include <string.h>
+//    4 void SendASignal(void);
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//    5 uint16 WaterFlowCount;
+WaterFlowCount:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//    6 uint8 RfidStatus = 0;
+RfidStatus:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//    7 uint8 rxBytePtr = 0;
+rxBytePtr:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//    8 uint8 rxByte[8];
+rxByte:
+        DS 8
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//    9 const unsigned char seg7table[16] = {
+seg7table:
+        DB 192
+        DB 249
+        DB 164
+        DB 176
+        DB 153
+        DB 146
+        DB 130
+        DB 248
+        DB 128
+        DB 144
+        DB 136
+        DB 131
+        DB 198
+        DB 161
+        DB 134
+        DB 142
+//   10     /* 0       1       2       3       4       5       6      7*/
+//   11     0xc0,   0xf9,   0xa4,   0xb0,   0x99,   0x92,   0x82,   0xf8,
+//   12     /* 8       9      A        B       C       D       E      F*/
+//   13     0x80,   0x90,   0x88,   0x83,   0xc6,   0xa1,   0x86,   0x8e };
+//   14 
+//   15 /**************************************************************/
+//   16 /* 传感器列表                                                 */
+//   17 /**************************************************************/
+//   18 /********************************/
+//   19 /* 燃气传感器                   */
+//   20 /********************************/
+//   21 #if !defined(ZDO_COORDINATOR)    
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   22     bool fLibrate = 0;//1:有振动;0:无振动
+fLibrate:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//   23 __interrupt void P1_ISR(void);    
+//   24 #pragma vector = 0x007B 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//   25 __interrupt void P1_ISR(void)
+P1_ISR:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function P1_ISR
+        CODE
+//   26 { 
+        ; Saved register size: 1
+        ; Auto size: 0
+//   27 #if defined(SENSORBOARD0)     
+//   28     if(P1IFG & (0x1<<3))
+//   29         fLibrate = 1;    
+//   30 #endif    
+//   31 #if defined(SENSORBOARD3)
+//   32     if(P1IFG & (0x1<<6))
+//   33         WaterFlowCount++;
+//   34 #endif    
+//   35     P1IFG = 0;
+        MOV     0x8a,#0x0
+//   36     P1IF = 0;
+        CLR     0xe8.3
+//   37 }
+        RETI
+        CFI EndBlock cfiBlock0
+        REQUIRE P1IFG
+        REQUIRE _A_IRCON2
+//   38 #endif
+//   39 //传感器板0处理
+//   40 #if defined(SENSORBOARD0)
+//   41 void SensorBd0ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//   42 void SensorBd0ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//   43 {
+//   44     if(type == ResInit)
+//   45     {
+//   46         Sensor_PIN_INT(0);
+//   47     }
+//   48 }
+//   49 void SensorBd0Timeout(struct ep_info_t *ep);
+//   50 void SensorBd0Timeout(struct ep_info_t *ep)
+//   51 {       
+//   52     uint8 SendBuf[12];
+//   53     uint16 AdValue;  
+//   54     float RHTValue;
+//   55     uint32 lTemp;
+//   56     uint16 ParentShortAddr;
+//   57     ParentShortAddr = NLME_GetCoordShortAddr();
+//   58     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//   59     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//   60 #if defined(RTR_NWK)
+//   61     SendBuf[2] = 0x40 | 0;
+//   62 #else
+//   63     SendBuf[2] = 0x80 | 0;
+//   64 #endif
+//   65     AdValue = ReadAdcValue(0x1,3,2);
+//   66     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//   67     AdValue = ReadAdcValue(0xe,3,2);   
+//   68     RHTValue = AdValue;
+//   69     RHTValue = RHTValue /1480 * 25;    
+//   70     SendBuf[4] = (uint8)(RHTValue);//主板温度   
+//   71     
+//   72     AdValue = ReadAdcValue(0x6,3,2);
+//   73     AdValue = AdValue>>6;
+//   74     RHTValue = AdValue;
+//   75     RHTValue = 330*RHTValue/128-50;
+//   76     SendBuf[5] = (uint8)RHTValue;//传感器板温度   
+//   77                   
+//   78     //SHT1_WriteReg(0x1);
+//   79     //Temp = SHT1_ReadReg();                            
+//   80     lTemp = ReadSHT1(3);//14bit温度
+//   81     lTemp = lTemp >> 8;
+//   82     RHTValue = lTemp;
+//   83     RHTValue = 0.01 * RHTValue - 39.64;                   
+//   84     SendBuf[6] = (uint8)RHTValue;//温湿度传感器温度  
+//   85                   
+//   86     lTemp = ReadSHT1(5);//12bit湿度                  
+//   87     lTemp = lTemp >> 8;
+//   88     RHTValue = lTemp;
+//   89     RHTValue = 0.0405 * RHTValue -4 - 2.8*RHTValue*RHTValue/1000000;                                                      
+//   90     SendBuf[7] = (uint8)RHTValue;//温湿度传感器湿度 
+//   91                   
+//   92     AdValue = ReadAdcValue(0x4,3,2);
+//   93     SendBuf[8] = (uint8)(AdValue>>6);//光照
+//   94                   
+//   95     SendBuf[9] = (uint8)fLibrate;//振动
+//   96     fLibrate = 0;
+//   97     SendBuf[10] = (P0>>5)&0x1;//人体感应                             	
+//   98     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 11);
+//   99 }   
+//  100 #endif
+//  101 
+//  102 //传感器板1处理
+//  103 #if defined(SENSORBOARD1)
+//  104 void SensorBd1ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  105 void SensorBd1ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  106 {
+//  107     if(type == ResInit)
+//  108     {
+//  109         Sensor_PIN_INT(1);
+//  110     }
+//  111 }
+//  112 void SensorBd1Timeout(struct ep_info_t *ep);
+//  113 void SensorBd1Timeout(struct ep_info_t *ep)
+//  114 {       
+//  115     uint8 SendBuf[12];
+//  116     uint16 AdValue;  
+//  117     float RHTValue;
+//  118     uint16 ParentShortAddr;
+//  119     ParentShortAddr = NLME_GetCoordShortAddr();
+//  120     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  121     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  122 #if defined(RTR_NWK)
+//  123     SendBuf[2] = 0x40 | 1;
+//  124 #else
+//  125     SendBuf[2] = 0x80 | 1;
+//  126 #endif
+//  127     AdValue = ReadAdcValue(0x1,3,2);
+//  128     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  129     AdValue = ReadAdcValue(0xe,3,2);   
+//  130     RHTValue = AdValue;
+//  131     RHTValue = RHTValue /1480 * 25;    
+//  132     SendBuf[4] = (uint8)(RHTValue);//主板温度   
+//  133     
+//  134     AdValue = ReadAdcValue(0x4,3,2);
+//  135     AdValue = AdValue>>6;
+//  136     SendBuf[5] = (uint8)AdValue;//烟雾   
+//  137                   
+//  138     AdValue = ReadAdcValue(0x5,3,2);
+//  139     AdValue = AdValue>>6;
+//  140     SendBuf[6] = (uint8)AdValue;//酒精   
+//  141                   
+//  142     AdValue = ReadAdcValue(0x6,3,2);
+//  143     AdValue = AdValue>>6;
+//  144     SendBuf[7] = (uint8)AdValue;//压力   
+//  145                
+//  146     AdValue = ReadAdcValue(0x7,3,2);
+//  147     AdValue = AdValue>>6;
+//  148     SendBuf[8] = (uint8)AdValue;//气压     	
+//  149     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 9);
+//  150 }   
+//  151 #endif
+//  152 
+//  153 //传感器板2处理
+//  154 #if defined(SENSORBOARD2)
+//  155 uint32 C320us;
+//  156 uint32 temp;
+//  157 void SensorBd2ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  158 void SensorBd2ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  159 {
+//  160     if(type == ResInit)
+//  161     {
+//  162         Sensor_PIN_INT(2);
+//  163     }
+//  164 }
+//  165 void SensorBd2Timeout(struct ep_info_t *ep);
+//  166 void SensorBd2Timeout(struct ep_info_t *ep)
+//  167 {       
+//  168     uint8 SendBuf[12];
+//  169     uint16 AdValue;  
+//  170     float RHTValue;
+//  171     uint16 ParentShortAddr;
+//  172     ParentShortAddr = NLME_GetCoordShortAddr();
+//  173     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  174     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  175 #if defined(RTR_NWK)
+//  176     SendBuf[2] = 0x40 | 2;
+//  177 #else
+//  178     SendBuf[2] = 0x80 | 2;
+//  179 #endif
+//  180     AdValue = ReadAdcValue(0x1,3,2);
+//  181     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  182     AdValue = ReadAdcValue(0xe,3,2);   
+//  183     RHTValue = AdValue;
+//  184     RHTValue = RHTValue /1480 * 25;    
+//  185     SendBuf[4] = (uint8)(RHTValue);//主板温度   
+//  186     
+//  187     SendASignal();                  
+//  188     while(!(P1 & 0x80));                                                                                 
+//  189     C320us = macMcuPrecisionCount();//高电平开始时间                 
+//  190     while(P1 & 0x80);                                                                                       
+//  191     temp = macMcuPrecisionCount() - C320us;//高电平宽度,单位为320us                                            
+//  192     SendBuf[5] = (uint8)(temp&0xff);    
+//  193                   
+//  194     AdValue = ReadAdcValue(0x4,3,2);//三轴加速度
+//  195     AdValue = AdValue>>6;
+//  196     SendBuf[6] = (uint8)AdValue;
+//  197                   
+//  198     AdValue = ReadAdcValue(0x5,3,2);
+//  199     AdValue = AdValue>>6;
+//  200     SendBuf[7] = (uint8)AdValue;
+//  201                  
+//  202     AdValue = ReadAdcValue(0x6,3,2);
+//  203     AdValue = AdValue>>6;
+//  204     SendBuf[8] = (uint8)AdValue;
+//  205             
+//  206     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 9);
+//  207 }   
+//  208 #endif
+//  209 
+//  210 //传感器板3处理
+//  211 #if defined(SENSORBOARD3)
+//  212 void SensorBd3ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  213 void SensorBd3ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  214 {
+//  215     if(type == ResInit)
+//  216     {
+//  217         Sensor_PIN_INT(3);
+//  218     }
+//  219 }
+//  220 void SensorBd3Timeout(struct ep_info_t *ep);
+//  221 void SensorBd3Timeout(struct ep_info_t *ep)
+//  222 {      
+//  223     uint8 SendBuf[12];
+//  224     uint16 AdValue;  
+//  225     float RHTValue;
+//  226     uint16 ParentShortAddr;
+//  227     ParentShortAddr = NLME_GetCoordShortAddr();
+//  228     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  229     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  230 #if defined(RTR_NWK)
+//  231     SendBuf[2] = 0x40 | 3;
+//  232 #else
+//  233     SendBuf[2] = 0x80 | 3;
+//  234 #endif
+//  235     AdValue = ReadAdcValue(0x1,3,2);
+//  236     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  237     AdValue = ReadAdcValue(0xe,3,2);   
+//  238     RHTValue = AdValue;
+//  239     RHTValue = RHTValue /1480 * 25;    
+//  240     SendBuf[4] = (uint8)(RHTValue);//主板温度   
+//  241     
+//  242     if(P1 & 0x80)//霍尔传感器
+//  243         SendBuf[5] = 0;  
+//  244     else
+//  245         SendBuf[5] = 1;  
+//  246     AdValue = ReadAdcValue(0x6,3,2);//雨滴传感器
+//  247     AdValue = AdValue>>6;
+//  248     SendBuf[6] = (uint8)AdValue;
+//  249     RHTValue = WaterFlowCount/3/*(SAMPLEAPP_RUN_TIMEOUT/1000)*/;//水流量
+//  250     SendBuf[7] = (uint8)RHTValue;
+//  251     WaterFlowCount = 0;
+//  252     P1 &= ~((1<<3)|(1<<4));//00:正,负管均不通         	
+//  253     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 8);   
+//  254 }   
+//  255 #endif
+//  256 
+//  257 //传感器板4处理
+//  258 #if defined(SENSORBOARD4)
+//  259 void SensorBd4ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  260 void SensorBd4ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  261 {
+//  262     if(type == ResInit)
+//  263     {
+//  264         Sensor_PIN_INT(4);
+//  265     }
+//  266 }
+//  267 void SensorBd4Timeout(struct ep_info_t *ep);
+//  268 void SensorBd4Timeout(struct ep_info_t *ep)
+//  269 {      
+//  270     uint8 SendBuf[12];    
+//  271     SendBuf[0] = 0x2;
+//  272     SendBuf[1] = 0x2;
+//  273     SendBuf[2] = 0x26;
+//  274     HalUARTWrite(HAL_UART_PORT_0, &SendBuf[0], 3);//发送寻卡命令                   
+//  275     RfidStatus = 1;//等待寻卡应答状态
+//  276     rxBytePtr = 0;          
+//  277 }
+//  278 #endif
+//  279 
+//  280 //传感器板5处理
+//  281 #if defined(SENSORBOARD5)
+//  282 void SensorBd5ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  283 void SensorBd5ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  284 {
+//  285     if(type == ResInit)
+//  286     {
+//  287         Sensor_PIN_INT(5);
+//  288     }
+//  289 }
+//  290 void SensorBd5Timeout(struct ep_info_t *ep);
+//  291 void SensorBd5Timeout(struct ep_info_t *ep)
+//  292 {      
+//  293     uint8 SendBuf[12];
+//  294     uint16 AdValue;  
+//  295     float RHTValue;
+//  296     uint16 ParentShortAddr;
+//  297     ParentShortAddr = NLME_GetCoordShortAddr();
+//  298     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  299     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  300 #if defined(RTR_NWK)
+//  301     SendBuf[2] = 0x40 | 5;
+//  302 #else
+//  303     SendBuf[2] = 0x80 | 5;
+//  304 #endif
+//  305     AdValue = ReadAdcValue(0x1,3,2);
+//  306     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  307     AdValue = ReadAdcValue(0xe,3,2);   
+//  308     RHTValue = AdValue;
+//  309     RHTValue = RHTValue /1480 * 25;    
+//  310     SendBuf[4] = (uint8)(RHTValue);//主板温度 
+//  311     
+//  312     AdValue = ReadAdcValue(0x7,3,2);  //CO、CO2、甲醛  
+//  313     AdValue = AdValue>>4;            
+//  314     SendBuf[5] = (uint8)(AdValue&0xff);
+//  315                   
+//  316     AdValue = ReadAdcValue(0x6,3,2);
+//  317     AdValue = AdValue>>4;            
+//  318     SendBuf[6] = (uint8)(AdValue&0xff);
+//  319                               
+//  320     AdValue = ReadAdcValue(0x5,3,2);
+//  321     AdValue = AdValue>>4;            
+//  322     SendBuf[7] = (uint8)(AdValue&0xff);   
+//  323     	
+//  324     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 8);  
+//  325 }
+//  326 #endif
+//  327 
+//  328 //传感器板6处理
+//  329 #if defined(SENSORBOARD6)
+//  330 uint8 DataValid;
+//  331 bool bStepEnable = 0;//步进电机启动或停止 0--停止；1--启动
+//  332 bool bStepDirect = 0;//步进电机方向，0--正向；1--反向
+//  333 uint8 bStepSpeed = 10;
+//  334 bool fStepDelay;
+//  335 uint8 cStepDelay;
+//  336 
+//  337 void SensorBd6ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  338 void SensorBd6ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  339 {
+//  340     if(type == ResInit)
+//  341     {
+//  342         Sensor_PIN_INT(6);
+//  343     }
+//  344 }
+//  345 void SensorBd6Timeout(struct ep_info_t *ep);
+//  346 void SensorBd6Timeout(struct ep_info_t *ep)
+//  347 {      
+//  348     uint8 SendBuf[12];
+//  349     uint16 AdValue;  
+//  350     float RHTValue;
+//  351     uint16 ParentShortAddr;
+//  352     ParentShortAddr = NLME_GetCoordShortAddr();
+//  353     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  354     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  355 #if defined(RTR_NWK)
+//  356     SendBuf[2] = 0x40 | 6;
+//  357 #else
+//  358     SendBuf[2] = 0x80 | 6;
+//  359 #endif
+//  360     AdValue = ReadAdcValue(0x1,3,2);
+//  361     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  362     AdValue = ReadAdcValue(0xe,3,2);   
+//  363     RHTValue = AdValue;
+//  364     RHTValue = RHTValue /1480 * 25;    
+//  365     SendBuf[4] = (uint8)(RHTValue);//主板温度         	
+//  366     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 5);  
+//  367 }
+//  368 void outputSensorBd6(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+//  369 void outputSensorBd6(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+//  370 {
+//  371   HalUARTWrite(HAL_UART_PORT_0, &msg->Data[0], 3);   
+//  372   HalUARTWrite(HAL_UART_PORT_0, "get", 3);
+//  373     if(msg->Data[0] == 0x6){//传感器6 电机
+//  374         DataValid = msg->Data[1];
+//  375         if( (DataValid>=1) && (DataValid<=6) ){                                          
+//  376             if(DataValid == 1){//停止
+//  377                 bStepEnable = 0;
+//  378             }
+//  379             else if(DataValid == 2){//启动
+//  380                	bStepEnable = 1;
+//  381                	cStepDelay = bStepSpeed*10;
+//  382                	fStepDelay = 0;               
+//  383             }
+//  384             else if(DataValid == 3)//正向
+//  385                	bStepDirect = 0;
+//  386             else if(DataValid == 4)//反向
+//  387                	bStepDirect = 1;
+//  388             else if(DataValid == 5){//加速
+//  389                	if(bStepSpeed >1){                  
+//  390             	    bStepSpeed--;
+//  391                     cStepDelay = bStepSpeed*10;
+//  392                     fStepDelay = 0;
+//  393                 }
+//  394             }
+//  395             else if(DataValid == 6){//减速
+//  396                 if(bStepSpeed <20){                  
+//  397                     bStepSpeed++;
+//  398                     cStepDelay = bStepSpeed*10;
+//  399                     fStepDelay = 0;
+//  400                 }
+//  401             }              
+//  402         }
+//  403         DataValid = msg->Data[2];
+//  404         if(DataValid == 1)//模拟电机停止
+//  405             P0 &= (~(0x1 << 6));
+//  406         if(DataValid == 2)//模拟电机启动
+//  407             P0 |= (0x1 << 6);            
+//  408     }      
+//  409 }
+//  410 #endif
+//  411 
+//  412 //传感器板7处理
+//  413 #if defined(SENSORBOARD7)
+//  414 uint8 DataValid;
+//  415 uint8 DataValue;
+//  416 uint16 cSound = 0;
+//  417 uint8 MatrixLed[8];
+//  418 uint8 i;
+//  419 void SensorBd7ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  420 void SensorBd7ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  421 {
+//  422     if(type == ResInit)
+//  423     {
+//  424         Sensor_PIN_INT(7);
+//  425     }
+//  426 }
+//  427 void SensorBd7Timeout(struct ep_info_t *ep);
+//  428 void SensorBd7Timeout(struct ep_info_t *ep)
+//  429 {      
+//  430     uint8 SendBuf[12];
+//  431     uint16 AdValue;  
+//  432     float RHTValue;
+//  433     uint16 ParentShortAddr;
+//  434     ParentShortAddr = NLME_GetCoordShortAddr();
+//  435     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  436     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  437 #if defined(RTR_NWK)
+//  438     SendBuf[2] = 0x40 | 7;
+//  439 #else
+//  440     SendBuf[2] = 0x80 | 7;
+//  441 #endif
+//  442     AdValue = ReadAdcValue(0x1,3,2);
+//  443     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  444     AdValue = ReadAdcValue(0xe,3,2);   
+//  445     RHTValue = AdValue;
+//  446     RHTValue = RHTValue /1480 * 25;    
+//  447     SendBuf[4] = (uint8)(RHTValue);//主板温度         	
+//  448     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 5);  
+//  449 }
+//  450 void outputSensorBd7(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+//  451 void outputSensorBd7(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+//  452 {    
+//  453     HalUARTWrite(HAL_UART_PORT_0, &msg->Data[0], 12);   
+//  454     if(msg->Data[0] == 0x7){//传感器7 显示
+//  455         DataValid = msg->Data[1];
+//  456         if(DataValid&0x1){//SEG7 Display
+//  457             P0 |= (0x1<<4);  
+//  458             DataValue = (msg->Data[2])&0xf;
+//  459             P1 =  seg7table[DataValue];
+//  460             P0 &= ~(0x1<<4);  
+//  461         }            
+//  462         else if(DataValid&0x2){//蜂鸣器
+//  463             cSound = (msg->Data[3]);                  
+//  464             cSound = cSound * 50;
+//  465         }
+//  466         else if(DataValid&0x4){//矩阵LED
+//  467             for(i=0;i<8;i++)
+//  468                 MatrixLed[i]= msg->Data[4+i];                
+//  469         }
+//  470     }           
+//  471 }
+//  472 #endif
+//  473 
+//  474 //传感器板8处理
+//  475 #if defined(SENSORBOARD8)
+//  476 void SensorBd8ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  477 void SensorBd8ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  478 {
+//  479     if(type == ResInit)
+//  480     {
+//  481         Sensor_PIN_INT(8);
+//  482     }
+//  483 }
+//  484 void SensorBd8Timeout(struct ep_info_t *ep);
+//  485 void SensorBd8Timeout(struct ep_info_t *ep)
+//  486 {      
+//  487     uint8 SendBuf[12];
+//  488     uint16 AdValue;  
+//  489     float RHTValue;
+//  490     uint16 ParentShortAddr;
+//  491     ParentShortAddr = NLME_GetCoordShortAddr();
+//  492     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  493     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  494 #if defined(RTR_NWK)
+//  495     SendBuf[2] = 0x40 | 8;
+//  496 #else
+//  497     SendBuf[2] = 0x80 | 8;
+//  498 #endif
+//  499     AdValue = ReadAdcValue(0x1,3,2);
+//  500     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  501     AdValue = ReadAdcValue(0xe,3,2);   
+//  502     RHTValue = AdValue;
+//  503     RHTValue = RHTValue /1480 * 25;    
+//  504     SendBuf[4] = (uint8)(RHTValue);//主板温度 
+//  505        
+//  506     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 5);  
+//  507 }
+//  508 #endif
+//  509 //传感器板9处理
+//  510 #if defined(SENSORBOARD9)
+//  511 void SensorBd9ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  512 void SensorBd9ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  513 {
+//  514     if(type == ResInit)
+//  515     {
+//  516         Sensor_PIN_INT(9);
+//  517     }
+//  518 }
+//  519 void SensorBd9Timeout(struct ep_info_t *ep);
+//  520 void SensorBd9Timeout(struct ep_info_t *ep)
+//  521 {      
+//  522     uint8 SendBuf[12];
+//  523     uint16 AdValue;  
+//  524     float RHTValue;
+//  525     uint16 ParentShortAddr;
+//  526     ParentShortAddr = NLME_GetCoordShortAddr();
+//  527     SendBuf[0] = (unsigned char)(ParentShortAddr);
+//  528     SendBuf[1] = (unsigned char)(ParentShortAddr>>8);
+//  529 #if defined(RTR_NWK)
+//  530     SendBuf[2] = 0x40 | 9;
+//  531 #else
+//  532     SendBuf[2] = 0x80 | 9;
+//  533 #endif
+//  534     AdValue = ReadAdcValue(0x1,3,2);
+//  535     SendBuf[3] = (uint8)(AdValue>>6);//A/D采集                                                                                       
+//  536     AdValue = ReadAdcValue(0xe,3,2);   
+//  537     RHTValue = AdValue;
+//  538     RHTValue = RHTValue /1480 * 25;    
+//  539     SendBuf[4] = (uint8)(RHTValue);//主板温度 
+//  540     
+//  541     AdValue = ReadAdcValue(0x4,3,2);    
+//  542     SendBuf[5] = (uint8)(AdValue&0xff);
+//  543     AdValue = AdValue>>8;            
+//  544     SendBuf[6] = (uint8)(AdValue&0xff);
+//  545     SendBuf[7] = (uint8)P0_5;
+//  546     SendBuf[8] = (uint8)P1_4; 
+//  547     SendData(ep->ep, &SendBuf[0], 0x0000, TRANSFER_ENDPOINT, 9);  
+//  548 }
+//  549 #endif
+//  550 
+//  551 
+//  552 /********************************/
+//  553 /* 二进制执行器传感器           */
+//  554 /********************************/
+//  555 #if defined(HAS_EXECUTEB)
+//  556 void OutputExecuteBResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  557 void OutputExecuteBResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  558 {
+//  559     if(type == ResInit)
+//  560         ControlInit();
+//  561 }
+//  562 void outputExecuteB(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+//  563 void outputExecuteB(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+//  564 {
+//  565     //msg->Data[], msg->DataLength, msg->TransSeqNumber
+//  566     Control(msg->Data[0]);
+//  567     SendData(ep->ep, &msg->Data[0], 0x0000, TRANSFER_ENDPOINT, 1);
+//  568 }
+//  569 void outputExecuteBTimeout(struct ep_info_t *ep);
+//  570 void outputExecuteBTimeout(struct ep_info_t *ep)
+//  571 {
+//  572     uint8 value = P1 >> 4;
+//  573     SendData(ep->ep, &value, 0x0000, TRANSFER_ENDPOINT, sizeof(value));
+//  574 }
+//  575 #endif
+//  576 /********************************/
+//  577 /* 模拟执行器传感器             */
+//  578 /********************************/
+//  579 #if defined(HAS_EXECUTEA)
+//  580 void outputExecuteA(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+//  581 void outputExecuteA(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+//  582 {
+//  583 }
+//  584 #endif
+//  585 /********************************/
+//  586 /* 遥控器传感器                 */
+//  587 /********************************/
+//  588 #if defined(HAS_REMOTER)
+//  589 void outputRemoter(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+//  590 void outputRemoter(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+//  591 {
+//  592 }
+//  593 #endif
+//  594 /********************************/
+//  595 /* 测试代码                     */
+//  596 /********************************/
+//  597 #if defined(HAS_TESTFUNCTION)
+//  598 void testFunc_NwkStateChanged(struct ep_info_t *ep);
+//  599 void testFunc_NwkStateChanged(struct ep_info_t *ep)
+//  600 {
+//  601 }
+//  602 void testFunc_inComeData(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg);
+//  603 void testFunc_inComeData(struct ep_info_t *ep, uint16 addr, uint8 endPoint, afMSGCommandFormat_t *msg)
+//  604 {
+//  605     //msg->Data[], msg->DataLength, msg->TransSeqNumber
+//  606 }
+//  607 void testFunc_TimeOut(struct ep_info_t *ep);
+//  608 void testFunc_TimeOut(struct ep_info_t *ep)
+//  609 {
+//  610     // send sensor data to coordinator
+//  611     //    SampleApp_SendPeriodicMessage(task_id);
+//  612     uint8 sendBuf[] = "(1 1)\r\n";
+//  613     sendBuf[1] = ep->ep + '0';
+//  614     sendBuf[3] = ep->function.type + '0';
+//  615     SendData(ep->ep, sendBuf, 0x0000, TRANSFER_ENDPOINT, 7);
+//  616 }
+//  617 void testFunc_ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res);
+//  618 void testFunc_ResAvailable(struct ep_info_t *ep, RES_TYPE type, void *res)
+//  619 {
+//  620     switch(type)
+//  621     {
+//  622     case ResInit:
+//  623         // 在这里可以做需要在初始化阶段做的事情
+//  624         break;
+//  625     }
+//  626 }
+//  627 #endif
+//  628 
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  629 struct ep_info_t funcList[] = {
+funcList:
+        DATA8
+        DS 33
+        REQUIRE `?<Initializer for funcList>`
+        REQUIRE __INIT_XDATA_I
+//  630 #if defined(SENSORBOARD0)
+//  631     {
+//  632         //stat,income,timeout,resource
+//  633         NULL, NULL, SensorBd0Timeout, SensorBd0ResAvailable,
+//  634         { DevSensorBd0, 0, 5 },                   // type, id, refresh cycle
+//  635     },
+//  636 #endif
+//  637 #if defined(SENSORBOARD1)
+//  638     {
+//  639         //stat,income,timeout,resource
+//  640         NULL, NULL, SensorBd1Timeout, SensorBd1ResAvailable,
+//  641         { DevSensorBd1, 0, 2 },                   // type, id, refresh cycle
+//  642     },
+//  643 #endif
+//  644 #if defined(SENSORBOARD2)
+//  645     {
+//  646         //stat,income,timeout,resource
+//  647         NULL, NULL, SensorBd2Timeout, SensorBd2ResAvailable,
+//  648         { DevSensorBd2, 0, 1 },                   // type, id, refresh cycle
+//  649     },
+//  650 #endif
+//  651 #if defined(SENSORBOARD3)
+//  652     {
+//  653         //stat,income,timeout,resource
+//  654         NULL, NULL, SensorBd3Timeout, SensorBd3ResAvailable,
+//  655         { DevSensorBd3, 0, 3 },                   // type, id, refresh cycle
+//  656     },
+//  657 #endif
+//  658 #if defined(SENSORBOARD4)
+//  659     {
+//  660         //stat,income,timeout,resource
+//  661         NULL, NULL, SensorBd4Timeout, SensorBd4ResAvailable,
+//  662         { DevSensorBd4, 0, 3 },                   // type, id, refresh cycle
+//  663     },
+//  664 #endif
+//  665 #if defined(SENSORBOARD5)
+//  666     {
+//  667         //stat,income,timeout,resource
+//  668         NULL, NULL, SensorBd5Timeout, SensorBd5ResAvailable,
+//  669         { DevSensorBd5, 0, 3 },                   // type, id, refresh cycle
+//  670     },
+//  671 #endif
+//  672 #if defined(SENSORBOARD6)
+//  673     {
+//  674         //stat,income,timeout,resource
+//  675         NULL, outputSensorBd6, SensorBd6Timeout, SensorBd6ResAvailable,
+//  676         { DevSensorBd6, 0, 5 },                   // type, id, refresh cycle
+//  677     },
+//  678 #endif
+//  679 #if defined(SENSORBOARD7)
+//  680     {
+//  681         //stat,income,timeout,resource
+//  682         NULL, outputSensorBd7, SensorBd7Timeout, SensorBd7ResAvailable,
+//  683         { DevSensorBd7, 0, 3 },                   // type, id, refresh cycle
+//  684     },
+//  685 #endif
+//  686 #if defined(SENSORBOARD8)
+//  687     {
+//  688         //stat,income,timeout,resource
+//  689         NULL, NULL, SensorBd8Timeout, SensorBd8ResAvailable,
+//  690         { DevSensorBd8, 0, 3 },                   // type, id, refresh cycle
+//  691     },
+//  692 #endif
+//  693 #if defined(SENSORBOARD9)
+//  694     {
+//  695         //stat,income,timeout,resource
+//  696         NULL, NULL, SensorBd9Timeout, SensorBd9ResAvailable,
+//  697         { DevSensorBd9, 0, 3 },                   // type, id, refresh cycle
+//  698     },
+//  699 #endif
+//  700 #if defined(ZDO_COORDINATOR)
+//  701     {   // 协调器
+//  702         CoordinatorNwkStateChangeRoutine,
+//  703         CoordinatorIncomingRoutine,
+//  704         CoordinatorTimeoutRoutine,
+//  705         CoordinatorResAvailableRoutine,
+//  706         { DevCoordinator, 0, 0 },
+//  707     },
+//  708 /***************************************************/
+//  709 /* 下面这一段针对路由器, 不需要修改                */
+//  710 /***************************************************/
+//  711 #elif defined(RTR_NWK) || defined(PEER_ROUTER) || defined(LIGHT)
+//  712     {   // 路由器
+//  713         RouterNwkStateChangeRoutine,
+//  714         RouterIncomingRoutine,
+//  715         RouterTimeoutRoutine,
+//  716         RouterResAvailableRoutine,
+//  717         { DevRouter, 0, 30 },
+//  718     },
+//  719 #endif
+//  720 };
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  721 void SendASignal(void)
+SendASignal:
+        CFI Block cfiBlock1 Using cfiCommon1
+        CFI Function SendASignal
+        CODE
+//  722 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  723     uint8 i;
+//  724     P1 &= ~(1<<6);                  
+        CLR     0x90.6
+//  725     P1 |= (1<<6);
+        SETB    0x90.6
+//  726     for(i=0;i<33;i++){
+        MOV     A,#0x21
+//  727         asm("NOP");
+??SendASignal_0:
+        NOP
+//  728         asm("NOP");
+        NOP
+//  729         asm("NOP");
+        NOP
+//  730         asm("NOP");
+        NOP
+//  731         asm("NOP");
+        NOP
+//  732         asm("NOP");
+        NOP
+//  733         asm("NOP");
+        NOP
+//  734         asm("NOP");
+        NOP
+//  735         asm("NOP");
+        NOP
+//  736         asm("NOP");
+        NOP
+//  737     }
+        DEC     A
+        JNZ     ??SendASignal_0
+//  738     P1 &= ~(1<<6);
+        CLR     0x90.6
+//  739 } 
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock1
+        REQUIRE _A_P1
+//  740 //不能修改下面的内容!!!
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//  741 const uint8 funcCount = sizeof(funcList) / sizeof(funcList[0]);
+funcCount:
+        DB 1
+
+        COMMON INTVEC:CODE:ROOT(0)
+        ORG 123
+`??P1_ISR??INTVEC 123`:
+        LJMP       (P1_ISR)
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for funcList>`:
+        DATA16
+        DW 0H
+        DW ??RouterIncomingRoutine?relay
+        DW ??RouterTimeoutRoutine?relay
+        DW 0H
+        DATA8
+        DB 240
+        DB 0
+        DB 30
+        DB 0, 0, 0, 0, 0, 0, 0, 0
+        DB 0, 0, 0, 0, 0, 0, 0, 0
+        DB 0, 0, 0, 0, 0, 0
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??SendASignal?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    SendASignal
+
+        END
+// 
+// 24 bytes in segment BANKED_CODE
+//  6 bytes in segment BANK_RELAYS
+//  3 bytes in segment INTVEC
+//  6 bytes in segment NEAR_CODE
+//  3 bytes in segment SFR_AN
+// 33 bytes in segment XDATA_I
+// 33 bytes in segment XDATA_ID
+// 17 bytes in segment XDATA_ROM_C
+// 13 bytes in segment XDATA_Z
+// 
+// 69 bytes of CODE  memory (+ 3 bytes shared)
+// 17 bytes of CONST memory
+//  0 bytes of DATA  memory (+ 3 bytes shared)
+// 46 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none
